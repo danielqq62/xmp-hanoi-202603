@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slides Viewer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-black text-white min-h-screen">
+  <main id="presentationShell" class="presentation-shell">
+    <header class="w-full max-w-6xl mx-auto px-4 pt-6 pb-3 flex items-center justify-between gap-4">
+      <h1 class="text-base sm:text-lg font-semibold tracking-wide text-gray-100">TikTok Growth Deck</h1>
+      <div class="flex items-center gap-3">
+        <p id="slideIndicator" class="text-sm text-gray-300">Slide 1 / 17</p>
+        <button
+          id="fullscreenBtn"
+          type="button"
+          class="px-3 py-1.5 text-xs sm:text-sm border border-white/20 rounded-md text-gray-100 hover:bg-white/10 transition disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Fullscreen
+        </button>
+      </div>
+    </header>
+
+    <section class="viewer-wrap">
+      <button id="prevBtn" type="button" class="nav-arrow nav-arrow-left" aria-label="Previous slide">❮</button>
+
+      <div class="slide-stage" aria-live="polite">
+        <div class="slide-frame-wrap">
+          <iframe
+            id="slideFrame"
+            title="Presentation slide"
+            class="slide-frame"
+            src="slides/slide1.html"
+            loading="eager"
+          ></iframe>
+        </div>
+      </div>
+
+      <button id="nextBtn" type="button" class="nav-arrow nav-arrow-right" aria-label="Next slide">❯</button>
+    </section>
+
+    <p id="statusText" class="status-text">Use ←/→ keys or side arrows to navigate</p>
+  </main>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

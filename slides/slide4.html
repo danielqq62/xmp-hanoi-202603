@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Why TikTok for Global Growth from Vietnam</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #0f0f0f;
+            color: #ffffff;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #000000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .decor-circle-top {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background-color: #EE1D52;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.08;
+            top: -150px;
+            right: -100px;
+            z-index: 0;
+        }
+        .decor-circle-bottom {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background-color: #69C9D0;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.08;
+            bottom: -200px;
+            left: -100px;
+            z-index: 0;
+        }
+
+        .header {
+            z-index: 10;
+            padding: 38px 60px 14px;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .slide-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 46px;
+            line-height: 1.1;
+            margin: 0;
+            color: #ffffff;
+            max-width: 980px;
+        }
+
+        .content-grid {
+            z-index: 10;
+            display: flex;
+            padding: 14px 60px 32px;
+            gap: 30px;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .left-col {
+            flex: 0 0 47%;
+            display: grid;
+            grid-template-rows: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            min-height: 0;
+        }
+
+        .context-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 18px 20px;
+            backdrop-filter: blur(5px);
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .context-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 19px;
+            color: #69C9D0;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            line-height: 1.2;
+        }
+
+        .context-text {
+            font-size: 14px;
+            line-height: 1.45;
+            color: #D1D5DB;
+            margin: 0;
+        }
+
+        .right-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            min-height: 0;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 16px;
+            min-height: 0;
+        }
+
+        .stat-card {
+            flex: 1;
+            min-height: 128px;
+            background-color: rgba(31, 41, 55, 0.6);
+            border-radius: 12px;
+            padding: 14px 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            border-left: 4px solid #EE1D52;
+        }
+
+        .stat-card.blue {
+            border-left-color: #0057FF;
+        }
+
+        .trend-badge {
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .trend-up {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: #34D399;
+        }
+
+        .stat-value {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 33px;
+            line-height: 1.05;
+            color: #ffffff;
+            margin-bottom: 8px;
+            white-space: nowrap;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #9CA3AF;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            line-height: 1.25;
+        }
+
+        .chart-container {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 16px;
+            position: relative;
+            min-height: 0;
+        }
+
+        .chart-title {
+            font-size: 13px;
+            color: #9CA3AF;
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .chart-note {
+            font-size: 11px;
+            color: #6B7280;
+            margin-bottom: 6px;
+            line-height: 1.35;
+        }
+
+        #growthChart {
+            width: 100%;
+            height: calc(100% - 24px);
+            min-height: 210px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="slide-container">
+    <div class="decor-circle-top"></div>
+    <div class="decor-circle-bottom"></div>
+
+    <div class="header">
+        <h1 class="slide-title">Why Vietnam Developers Should Use TikTok Ads for Global Growth</h1>
+    </div>
+
+    <div class="content-grid">
+        <div class="left-col">
+            <div class="context-card">
+                <div class="context-title">
+                    <i class="fas fa-gamepad"></i>
+                    <span>Mobile-First Growth Engine</span>
+                </div>
+                <p class="context-text">
+                    Vietnam has emerged as a top-tier market for mobile gaming talent. With strong app-building capabilities and a young, digital-native audience, local teams are well positioned to build creatives that scale across global markets.
+                </p>
+            </div>
+
+            <div class="context-card">
+                <div class="context-title">
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok Discovery Advantage</span>
+                </div>
+                <p class="context-text">
+                    User behavior is shifting from passive scrolling to active <strong>discovery mode</strong>. TikTok helps Vietnamese developers reach high-intent users in SEA, US, Europe, and LATAM through creative-led recommendation distribution.
+                </p>
+            </div>
+
+            <div class="context-card">
+                <div class="context-title">
+                    <i class="fas fa-robot"></i>
+                    <span>The AI &amp; Automation Era</span>
+                </div>
+                <p class="context-text">
+                    Winning growth teams are moving to API-first operations. Automation and AI-powered creative iteration replace manual campaign workflows, enabling faster test cycles and sustainable global scaling.
+                </p>
+            </div>
+        </div>
+
+        <div class="right-col">
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="trend-badge trend-up"><i class="fas fa-arrow-up mr-1"></i> Growing</div>
+                    <div class="stat-value">Double-Digit</div>
+                    <div class="stat-label">Digital Ad Spend Growth (Annual)</div>
+                </div>
+                <div class="stat-card blue">
+                    <div class="trend-badge trend-up" style="background-color: rgba(59, 130, 246, 0.2); color: #60A5FA;"><i class="fas fa-bolt mr-1"></i> High Impact</div>
+                    <div class="stat-value">Discovery</div>
+                    <div class="stat-label">TikTok Mindset for Global UA</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">TikTok Ad Revenue vs Global Gaming UA Spend</div>
+                <div class="chart-note">2023–2027 includes forecast/estimated values compiled from available market references.</div>
+                <div id="growthChart"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var chartDom = document.getElementById('growthChart');
+            var myChart = echarts.init(chartDom);
+
+            var option = {
+                backgroundColor: 'transparent',
+                grid: {
+                    top: '15%',
+                    left: '4%',
+                    right: '4%',
+                    bottom: '4%',
+                    containLabel: true
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                legend: {
+                    data: ['TikTok Ad Revenue', 'Gaming UA Spend'],
+                    textStyle: {
+                        color: '#9CA3AF'
+                    },
+                    top: 0,
+                    right: 0
+                },
+                xAxis: {
+                    type: 'category',
+                    data: ['2023', '2024', '2025', '2026', '2027'],
+                    axisLine: {
+                        lineStyle: {
+                            color: '#4B5563'
+                        }
+                    },
+                    axisLabel: {
+                        color: '#9CA3AF'
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    name: 'USD (B)',
+                    nameTextStyle: {
+                        color: '#9CA3AF',
+                        padding: [0, 0, 0, 8]
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: 'rgba(255, 255, 255, 0.05)'
+                        }
+                    },
+                    axisLabel: {
+                        color: '#9CA3AF'
+                    }
+                },
+                series: [
+                    {
+                        name: 'TikTok Ad Revenue',
+                        type: 'bar',
+                        barWidth: '20%',
+                        itemStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: '#EE1D52' },
+                                { offset: 1, color: '#901233' }
+                            ]),
+                            borderRadius: [4, 4, 0, 0]
+                        },
+                        data: [16.1, 23.0, 33.1, 43.0, 53.8]
+                    },
+                    {
+                        name: 'Gaming UA Spend',
+                        type: 'line',
+                        smooth: true,
+                        symbol: 'circle',
+                        symbolSize: 8,
+                        itemStyle: {
+                            color: '#69C9D0',
+                            borderWidth: 2,
+                            borderColor: '#fff'
+                        },
+                        lineStyle: {
+                            width: 3,
+                            color: '#69C9D0'
+                        },
+                        data: [29.0, 27.0, 25.0, 26.0, 27.0]
+                    }
+                ]
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', function() { myChart.resize(); });
+        });
+    </script>
+</body>
+</html>

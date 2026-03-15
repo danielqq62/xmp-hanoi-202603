@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TikTok as Growth Channel</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #0f0f0f;
+            color: #ffffff;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            background-color: #000000;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Decorative Elements */
+        .glow-top-left {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background-color: #69C9D0;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.1;
+            top: -400px;
+            left: -200px;
+            z-index: 0;
+        }
+
+        .glow-bottom-right {
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            background-color: #EE1D52;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.1;
+            bottom: -300px;
+            right: -100px;
+            z-index: 0;
+        }
+
+        /* Header */
+        .header {
+            z-index: 10;
+            padding: 40px 80px 20px 80px;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .slide-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 56px;
+            line-height: 1.1;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .slide-title span {
+            color: #EE1D52;
+        }
+
+        /* Content Grid */
+        .content-wrapper {
+            z-index: 10;
+            flex: 1;
+            display: flex;
+            padding: 0 80px 40px 80px;
+            gap: 40px;
+            min-height: 0;
+            align-items: stretch;
+        }
+
+        .left-column {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-rows: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+            min-height: 0;
+        }
+
+        .right-column {
+            width: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Benefit Cards */
+        .benefit-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+        }
+
+        .card-1::before { background-color: #69C9D0; }
+        .card-2::before { background-color: #EE1D52; }
+        .card-3::before { background-color: #F59E0B; }
+        .card-4::before { background-color: #8B5CF6; }
+
+        .icon-container {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .card-1 .icon-container { background-color: rgba(105, 201, 208, 0.15); color: #69C9D0; }
+        .card-2 .icon-container { background-color: rgba(238, 29, 82, 0.15); color: #EE1D52; }
+        .card-3 .icon-container { background-color: rgba(245, 158, 11, 0.15); color: #F59E0B; }
+        .card-4 .icon-container { background-color: rgba(139, 92, 246, 0.15); color: #8B5CF6; }
+
+        .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 19px;
+            margin-bottom: 10px;
+            color: #ffffff;
+            line-height: 1.2;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            line-height: 1.45;
+            color: #D1D5DB;
+            margin: 0;
+        }
+
+        /* Engagement Stat Box */
+        .stat-box {
+            background-color: rgba(31, 41, 55, 0.6);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 80px;
+            background-color: #ffffff;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #EE1D52;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 24px;
+        }
+
+        .stat-detail {
+            font-size: 16px;
+            color: #9CA3AF;
+            line-height: 1.6;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .highlight-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(238, 29, 82, 0.2);
+            color: #EE1D52;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="slide-container">
+    <div class="glow-top-left"></div>
+    <div class="glow-bottom-right"></div>
+
+    <div class="header">
+        <h1 class="slide-title">TikTok: The <span>Ultimate</span> Growth Engine</h1>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="left-column">
+            <div class="benefit-card card-1">
+                <div class="icon-container">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3 class="card-title">Discovery-Driven</h3>
+                <p class="card-desc">
+                    Unlike traditional search, TikTok's algorithm pushes apps to users who haven't actively looked for them but have high intent potential.
+                </p>
+            </div>
+
+            <div class="benefit-card card-2">
+                <div class="icon-container">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="card-title">Short-Form Engagement</h3>
+                <p class="card-desc">
+                    Immersive, full-screen video format captures attention instantly, driving higher conversion rates for gaming and utility apps.
+                </p>
+            </div>
+
+            <div class="benefit-card card-3">
+                <div class="icon-container">
+                    <i class="fas fa-globe-asia"></i>
+                </div>
+                <h3 class="card-title">Global Reach</h3>
+                <p class="card-desc">
+                    Massive scale across Southeast Asia, US, Europe, and Latin America allows advertisers to test and scale globally from one platform.
+                </p>
+            </div>
+
+            <div class="benefit-card card-4">
+                <div class="icon-container">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h3 class="card-title">Gaming &amp; App Focus</h3>
+                <p class="card-desc">
+                    Dedicated ad solutions like Smart+ App Campaigns optimize specifically for installs, ROAS, and in-app events.
+                </p>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div class="stat-box">
+                <div class="highlight-badge">
+                    <i class="fas fa-chart-line mr-2"></i> High Impact
+                </div>
+                <div class="stat-number">2.5x</div>
+                <h3 class="stat-label">Higher Engagement</h3>
+                <p class="stat-detail">
+                    TikTok users are 2.5x more likely to download an app after seeing an ad compared to other video platforms, driving lower CPI and higher LTV.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

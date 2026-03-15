@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Beyond Traffic: Building a Scalable TikTok Growth Engine</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+        background-color: #0f0f0f;
+        color: #ffffff;
+    }
+    .slide-container {
+        width: 1280px;
+        height: 720px;
+        position: relative;
+        overflow: hidden;
+        background-color: #000000;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .glow-cyan {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        background-color: #69C9D0;
+        border-radius: 50%;
+        filter: blur(100px);
+        opacity: 0.15;
+        top: -200px;
+        left: -100px;
+        z-index: 0;
+    }
+    .glow-pink {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background-color: #EE1D52;
+        border-radius: 50%;
+        filter: blur(100px);
+        opacity: 0.15;
+        bottom: -100px;
+        right: -100px;
+        z-index: 0;
+    }
+    .glow-blue {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background-color: #0057FF;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+    }
+
+    .content {
+        z-index: 10;
+        position: relative;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* 居中内容 */
+        align-items: center;
+        padding: 0 80px;
+    }
+
+    .title-text {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+    }
+
+    .accent-text-cyan { color: #69C9D0; }
+    .accent-text-pink { color: #EE1D52; }
+
+    .logo-box {
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 15px 30px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .logo-placeholder {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container">
+    <!-- Background Elements -->
+    <div class="glow-cyan"></div>
+    <div class="glow-pink"></div>
+    <div class="glow-blue"></div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Event Tagline -->
+        <div class="mb-8 flex items-center justify-center">
+            <span class="px-4 py-1.5 bg-gray-800 rounded-full text-xs font-bold tracking-widest uppercase text-gray-300 border border-gray-700">Hanoi</span>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="title-text text-7xl text-center mb-6 text-white">
+            Beyond <span class="accent-text-cyan">Traffic</span>
+        </h1>
+        <h2 class="title-text text-5xl text-center mb-10 text-white">
+            Building a Scalable <br/>
+            <span class="accent-text-pink">TikTok Growth Engine</span>
+        </h2>
+
+        <!-- Logo Box Placeholder (optional) -->
+        <!-- You can add logos here if you want, but footer removed -->
+    </div>
+</div>
+</body>
+</html>

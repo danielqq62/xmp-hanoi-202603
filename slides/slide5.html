@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart+ Introduction — AI-Powered Campaigns</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #0f0f0f;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            background-color: #000000;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Decorative Background */
+        .glow-cyan {
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            background-color: #69C9D0;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.08;
+            top: -300px;
+            right: -100px;
+            z-index: 0;
+        }
+        
+        .glow-purple {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background-color: #8B5CF6;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.08;
+            bottom: -200px;
+            left: -100px;
+            z-index: 0;
+        }
+
+        /* Header */
+        .header {
+            z-index: 10;
+            padding: 40px 60px 20px 60px;
+        }
+
+        .slide-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 48px;
+            line-height: 1.1;
+            margin: 0 0 12px 0;
+            color: #ffffff;
+        }
+
+        .slide-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            color: #9CA3AF;
+            max-width: 900px;
+        }
+
+        /* Main Content */
+        .content-wrapper {
+            z-index: 10;
+            flex: 1;
+            padding: 20px 60px 50px 60px;
+            display: flex;
+            gap: 40px;
+        }
+
+        /* Left Column: Smart+ Features */
+        .left-column {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .feature-card {
+            background-color: rgba(31, 41, 55, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: transform 0.2s;
+        }
+
+        .icon-box {
+            min-width: 56px;
+            height: 56px;
+            background-color: rgba(105, 201, 208, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #69C9D0;
+        }
+
+        .feature-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            margin: 0 0 8px 0;
+            color: #ffffff;
+        }
+
+        .feature-content p {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #D1D5DB;
+            margin: 0;
+        }
+
+        /* Right Column: TikTok Minis Highlight */
+        .right-column {
+            flex: 0.8;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .minis-card {
+            background-color: rgba(238, 29, 82, 0.05);
+            border: 1px solid rgba(238, 29, 82, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .minis-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #EE1D52;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .minis-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 32px;
+            margin: 10px 0 20px 0;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .minis-logo {
+            color: #EE1D52;
+        }
+
+        .market-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .market-tag {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .flag-icon {
+            font-size: 14px;
+        }
+
+        .minis-desc {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #D1D5DB;
+            margin-bottom: 30px;
+            flex: 1;
+        }
+
+        .xmp-advantage-box {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #69C9D0;
+        }
+
+        .advantage-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #69C9D0;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .advantage-text {
+            font-size: 14px;
+            color: #D1D5DB;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Connecting Arrow */
+        .arrow-connector {
+            position: absolute;
+            left: -24px;
+            top: 50%;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 24px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Background Elements -->
+<div class="glow-cyan"></div>
+<div class="glow-purple"></div>
+<!-- Header -->
+<div class="header">
+<h1 class="slide-title">The Power of <span style="color: #69C9D0;">Smart+</span> &amp; <span style="color: #EE1D52;">TikTok Minis</span></h1>
+<p class="slide-subtitle">Leverage AI-driven automation and exclusive ad formats to maximize ROAS and scale creative testing.</p>
+</div>
+<!-- Main Content -->
+<div class="content-wrapper">
+<!-- Left Column: Smart+ Features -->
+<div class="left-column">
+<!-- Feature 1 -->
+<div class="feature-card">
+<div class="icon-box">
+<i class="fas fa-magic"></i>
+</div>
+<div class="feature-content">
+<h3>Smart+ App Campaigns</h3>
+<p>Fully automated campaign type that uses machine learning to optimize targeting, bidding, and creative delivery for maximum performance.</p>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="feature-card">
+<div class="icon-box">
+<i class="fas fa-robot"></i>
+</div>
+<div class="feature-content">
+<h3>AI-Powered Optimization</h3>
+<p>Automatically shifts budget to winning creatives and audiences in real-time, eliminating manual guesswork and improving efficiency.</p>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="feature-card">
+<div class="icon-box">
+<i class="fas fa-photo-video"></i>
+</div>
+<div class="feature-content">
+<h3>Creative Automation</h3>
+<p>Smart+ prevents creative fatigue by automatically rotating assets and generating new variations to keep performance stable.</p>
+</div>
+</div>
+</div>
+<!-- Right Column: TikTok Minis -->
+<div class="right-column">
+<div class="minis-card">
+<span class="minis-badge">Exclusive Format</span>
+<h2 class="minis-title">
+<i class="fab fa-tiktok minis-logo"></i>
+                        TikTok Minis
+                    </h2>
+<div class="market-tags">
+<div class="market-tag">
+<i class="fas fa-flag-usa flag-icon text-blue-400"></i> US Market
+                        </div>
+<div class="market-tag">
+<i class="fas fa-circle text-red-500 flag-icon"></i> Japan Market
+                        </div>
+<div class="market-tag">
+<i class="fas fa-lock text-yellow-400 flag-icon"></i> Whitelist Only
+                        </div>
+</div>
+<p class="minis-desc">
+                        A premium ad solution designed for short drama advertisers. Allows seamless, binge-worthy content consumption within the app, driving higher retention and LTV for drama apps.
+                    </p>
+<div class="xmp-advantage-box">
+<div class="advantage-title">
+<i class="fas fa-bolt"></i> XMP Advantage
+                        </div>
+<p class="advantage-text">
+                            XMP supports full API integration for TikTok Minis, enabling bulk creation and deep performance tracking for short drama campaigns.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

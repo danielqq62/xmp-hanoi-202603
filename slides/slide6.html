@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Creative Impact</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #0f0f0f;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            background-color: #000000;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .glow-purple {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background-color: #8B5CF6;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.08;
+            top: -400px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        .header {
+            z-index: 10;
+            padding: 36px 80px 18px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .slide-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 50px;
+            line-height: 1.1;
+            margin: 0 0 10px;
+            color: #ffffff;
+        }
+
+        .slide-subtitle {
+            font-size: 16px;
+            color: #9CA3AF;
+            max-width: 860px;
+            margin: 0 auto;
+            line-height: 1.45;
+        }
+
+        .content-wrapper {
+            z-index: 10;
+            flex: 1;
+            padding: 8px 80px 28px;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .evolution-container {
+            display: flex;
+            align-items: stretch;
+            gap: 24px;
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .stage-card {
+            flex: 1;
+            background-color: rgba(31, 41, 55, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 24px;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stage-card.future {
+            background:
+                radial-gradient(circle at 80% 5%, rgba(167, 139, 250, 0.16), transparent 45%),
+                rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.38);
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 14px;
+            flex-shrink: 0;
+        }
+
+        .card-icon {
+            font-size: 34px;
+            margin-bottom: 12px;
+            color: #9CA3AF;
+        }
+
+        .future .card-icon {
+            color: #A78BFA;
+        }
+
+        .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 23px;
+            color: #ffffff;
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .card-subtitle {
+            font-size: 13px;
+            color: #9CA3AF;
+            margin: 0;
+        }
+
+        .visual-container {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            min-height: 0;
+        }
+
+        .file-stack {
+            position: relative;
+            width: 116px;
+            height: 132px;
+        }
+
+        .file {
+            position: absolute;
+            width: 94px;
+            height: 112px;
+            background-color: #374151;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6B7280;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+        }
+
+        .file-1 { top: 0; left: 0; z-index: 1; }
+        .file-2 { top: 8px; left: 8px; z-index: 2; background-color: #4B5563; }
+        .file-3 { top: 16px; left: 16px; z-index: 3; background-color: #6B7280; color: #fff; }
+
+        .ai-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 8px;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .ai-file {
+            height: 68px;
+            background: linear-gradient(165deg, rgba(139, 92, 246, 0.3), rgba(76, 29, 149, 0.25));
+            border: 1px solid rgba(167, 139, 250, 0.42);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 7px 8px;
+            color: #DDD6FE;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+        }
+
+        .ai-file-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #C4B5FD;
+            line-height: 1;
+        }
+
+        .ai-file-title {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: #F5F3FF;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .ai-bars {
+            display: flex;
+            gap: 3px;
+            align-items: flex-end;
+        }
+
+        .ai-bar {
+            width: 4px;
+            border-radius: 2px;
+            background-color: rgba(196, 181, 253, 0.75);
+        }
+
+        .b1 { height: 7px; }
+        .b2 { height: 11px; }
+        .b3 { height: 15px; }
+
+        .connector {
+            width: 84px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #69C9D0;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .arrow-line {
+            width: 60px;
+            height: 2px;
+            background-color: #69C9D0;
+            position: relative;
+        }
+
+        .arrow-line::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -4px;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 8px solid #69C9D0;
+        }
+
+        .ai-badge {
+            background-color: #69C9D0;
+            color: #000;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .metrics-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .metric-item {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 0;
+        }
+
+        .metric-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background-color: rgba(139, 92, 246, 0.2);
+            color: #A78BFA;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .metric-text {
+            font-size: 12px;
+            color: #D1D5DB;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .challenge-box {
+            margin: 0 auto;
+            background-color: #1F2937;
+            border: 1px solid #374151;
+            padding: 10px 20px;
+            border-radius: 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            max-width: 940px;
+        }
+
+        .challenge-text {
+            font-size: 14px;
+            color: #9CA3AF;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .challenge-highlight {
+            color: #F87171;
+            font-weight: 700;
+        }
+
+    </style>
+</head>
+<body>
+<div class="slide-container">
+    <div class="glow-purple"></div>
+
+    <div class="header">
+        <h1 class="slide-title">AI is Revolutionizing Creative Production</h1>
+        <p class="slide-subtitle">
+            Artificial Intelligence has transformed creative output from a manual bottleneck into a scalable engine, but this volume creates new operational challenges.
+        </p>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="evolution-container">
+            <div class="stage-card">
+                <div class="card-header">
+                    <i class="fas fa-user-edit card-icon"></i>
+                    <h3 class="card-title">Traditional Production</h3>
+                    <p class="card-subtitle">Limited by human resources</p>
+                </div>
+                <div class="visual-container">
+                    <div class="file-stack">
+                        <div class="file file-1"><i class="fas fa-video"></i></div>
+                        <div class="file file-2"><i class="fas fa-video"></i></div>
+                        <div class="file file-3"><i class="fas fa-video"></i></div>
+                    </div>
+                    <p class="mt-3 text-gray-400 text-sm">~5 creatives / week</p>
+                </div>
+            </div>
+
+            <div class="connector">
+                <div class="ai-badge">AI ENABLED</div>
+                <div class="arrow-line"></div>
+            </div>
+
+            <div class="stage-card future">
+                <div class="card-header">
+                    <i class="fas fa-robot card-icon"></i>
+                    <h3 class="card-title">AI-Powered Scale</h3>
+                    <p class="card-subtitle">Unlimited generation capacity</p>
+                </div>
+                <div class="visual-container">
+                    <div class="ai-grid">
+                        <div class="ai-file">
+                            <div class="ai-file-head"><i class="fas fa-image"></i><span>V1</span></div>
+                            <div class="ai-file-title">Hook Test</div>
+                            <div class="ai-bars"><span class="ai-bar b2"></span><span class="ai-bar b3"></span><span class="ai-bar b1"></span></div>
+                        </div>
+                        <div class="ai-file">
+                            <div class="ai-file-head"><i class="fas fa-language"></i><span>V2</span></div>
+                            <div class="ai-file-title">Localized VO</div>
+                            <div class="ai-bars"><span class="ai-bar b1"></span><span class="ai-bar b2"></span><span class="ai-bar b3"></span></div>
+                        </div>
+                        <div class="ai-file">
+                            <div class="ai-file-head"><i class="fas fa-fire"></i><span>V3</span></div>
+                            <div class="ai-file-title">Trend Remix</div>
+                            <div class="ai-bars"><span class="ai-bar b3"></span><span class="ai-bar b2"></span><span class="ai-bar b2"></span></div>
+                        </div>
+                        <div class="ai-file">
+                            <div class="ai-file-head"><i class="fas fa-music"></i><span>V4</span></div>
+                            <div class="ai-file-title">Audio Swap</div>
+                            <div class="ai-bars"><span class="ai-bar b2"></span><span class="ai-bar b1"></span><span class="ai-bar b3"></span></div>
+                        </div>
+                        <div class="ai-file">
+                            <div class="ai-file-head"><i class="fas fa-cut"></i><span>V5</span></div>
+                            <div class="ai-file-title">Cutdown 15s</div>
+                            <div class="ai-bars"><span class="ai-bar b1"></span><span class="ai-bar b3"></span><span class="ai-bar b2"></span></div>
+                        </div>
+                        <div class="ai-file">
+                            <div class="ai-file-head"><i class="fas fa-plus"></i><span>50+</span></div>
+                            <div class="ai-file-title">More Variants</div>
+                            <div class="ai-bars"><span class="ai-bar b3"></span><span class="ai-bar b3"></span><span class="ai-bar b2"></span></div>
+                        </div>
+                    </div>
+                    <p class="mt-2 text-purple-300 text-sm font-bold">50+ creatives / week</p>
+                </div>
+                <div class="metrics-row">
+                    <div class="metric-item">
+                        <div class="metric-icon"><i class="fas fa-language"></i></div>
+                        <span class="metric-text">Auto-Localization</span>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-icon"><i class="fas fa-microphone-alt"></i></div>
+                        <span class="metric-text">AI Voiceovers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="challenge-box">
+            <i class="fas fa-exclamation-circle text-red-400"></i>
+            <p class="challenge-text">
+                New Challenge: <span class="challenge-highlight">How to test and manage 10x more assets efficiently?</span>
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

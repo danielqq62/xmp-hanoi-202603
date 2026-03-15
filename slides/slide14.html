@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Automation &amp; Intelligence: Scale Without Burnout</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #0f0f0f;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            background-color: #000000;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Gradient Orbs - Using solid colors instead of gradients as requested */
+        .orb-top-right {
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            background-color: #25F4EE; /* TikTok Cyan */
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.08;
+            top: -300px;
+            right: -200px;
+            z-index: 0;
+        }
+
+        .orb-bottom-left {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background-color: #FE2C55; /* TikTok Red */
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.08;
+            bottom: -200px;
+            left: -150px;
+            z-index: 0;
+        }
+
+        /* Header */
+        .header {
+            z-index: 10;
+            padding: 50px 80px 10px 80px;
+            text-align: center;
+        }
+
+        .title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 44px;
+            line-height: 1.2;
+            margin: 0 0 16px 0;
+            letter-spacing: -0.02em;
+            color: #ffffff; /* Replaced gradient text with solid color */
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: #9CA3AF;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* Main Content - 3 Column Grid */
+        .content-wrapper {
+            z-index: 10;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 60px 60px 60px;
+            gap: 40px;
+        }
+
+        .feature-card {
+            background-color: rgba(31, 41, 55, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 30px;
+            width: 340px;
+            height: 420px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            position: relative;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(12px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(31, 41, 55, 0.6);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Card Icon */
+        .card-icon-box {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        /* Card Colors */
+        .card-blue .card-icon-box { background: rgba(59, 130, 246, 0.15); color: #60A5FA; border: 1px solid rgba(59, 130, 246, 0.3); }
+        .card-purple .card-icon-box { background: rgba(139, 92, 246, 0.15); color: #A78BFA; border: 1px solid rgba(139, 92, 246, 0.3); }
+        .card-pink .card-icon-box { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
+
+        .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            margin: 0 0 16px 0;
+            color: #ffffff;
+        }
+
+        .card-desc {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #D1D5DB;
+            margin: 0 0 24px 0;
+            flex-grow: 1;
+        }
+
+        /* Bullet Points inside Card */
+        .feature-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            width: 100%;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #E5E7EB;
+        }
+
+        .feature-item i {
+            margin-right: 10px;
+            font-size: 12px;
+        }
+
+        .card-blue .feature-item i { color: #60A5FA; }
+        .card-purple .feature-item i { color: #A78BFA; }
+        .card-pink .feature-item i { color: #F472B6; }
+
+        /* Automation Graphic - Connecting Line */
+        .connection-line {
+            position: absolute;
+            top: 50%;
+            left: 100px;
+            right: 100px;
+            height: 1px;
+            background-color: rgba(255,255,255,0.1); /* Removed gradient */
+            z-index: 5;
+            transform: translateY(40px);
+        }
+
+        /* Badge */
+        .ai-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Background Elements -->
+<div class="orb-top-right"></div>
+<div class="orb-bottom-left"></div>
+<div class="connection-line"></div>
+<!-- Header -->
+<div class="header">
+<h1 class="title">Automation &amp; Intelligence: Scale Without Burnout</h1>
+<p class="subtitle">Let AI handle routine optimization while your team focuses on strategy and creative concepts.</p>
+</div>
+<!-- Content Wrapper -->
+<div class="content-wrapper">
+<!-- Card 1: 24/7 Monitoring -->
+<div class="feature-card card-blue">
+<div class="ai-badge">Always On</div>
+<div class="card-icon-box">
+<i class="fas fa-eye"></i>
+</div>
+<h3 class="card-title">24/7&nbsp;Smart&nbsp;Monitoring</h3>
+<p class="card-desc">Continuous surveillance of your campaign health, catching anomalies before they drain your budget.</p>
+<ul class="feature-list">
+<li class="feature-item"><i class="fas fa-check-circle"></i> Instant alerts for spend spikes</li>
+<li class="feature-item"><i class="fas fa-check-circle"></i> Detect zero-install ad groups</li>
+<li class="feature-item"><i class="fas fa-check-circle"></i> Monitor ROAS thresholds hourly</li>
+</ul>
+</div>
+<!-- Card 2: Budget Autopilot -->
+<div class="feature-card card-purple">
+<div class="ai-badge">Auto-Scale</div>
+<div class="card-icon-box">
+<i class="fas fa-robot"></i>
+</div>
+<h3 class="card-title">Budget Autopilot</h3>
+<p class="card-desc">Automatically allocate budget to top performers and scale winners based on your specific KPI guardrails.</p>
+<ul class="feature-list">
+<li class="feature-item"><i class="fas fa-check-circle"></i> Scale winners by +20% daily</li>
+<li class="feature-item"><i class="fas fa-check-circle"></i> Cut losers with low IPM/CTR</li>
+<li class="feature-item"><i class="fas fa-check-circle"></i> Learning phase protection rules</li>
+</ul>
+</div>
+<!-- Card 3: Creative Rotation -->
+<div class="feature-card card-pink">
+<div class="ai-badge">Anti-Fatigue</div>
+<div class="card-icon-box">
+<i class="fas fa-sync-alt"></i>
+</div>
+<h3 class="card-title">Creative Rotation</h3>
+<p class="card-desc">Combat ad fatigue by automatically rotating in fresh creatives when performance dips below benchmarks.</p>
+<ul class="feature-list">
+<li class="feature-item"><i class="fas fa-check-circle"></i> Auto-refresh fatigued ads</li>
+<li class="feature-item"><i class="fas fa-check-circle"></i> Test new hooks systematically</li>
+<li class="feature-item"><i class="fas fa-check-circle"></i> Maintain steady delivery volume</li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

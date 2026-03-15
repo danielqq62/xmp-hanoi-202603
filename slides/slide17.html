@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ready to Scale? Start Your Growth Engine</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #0f0f0f;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            background-color: #000000;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .accent-circle-1 {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background-color: #EE1D52;
+            border-radius: 50%;
+            filter: blur(180px);
+            opacity: 0.08;
+            top: -200px;
+            right: -200px;
+            z-index: 0;
+        }
+
+        .accent-circle-2 {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background-color: #69C9D0;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.06;
+            bottom: -150px;
+            left: -150px;
+            z-index: 0;
+        }
+
+        .content-wrapper {
+            z-index: 10;
+            flex: 1;
+            display: flex;
+            padding: 58px 80px;
+            gap: 70px;
+            align-items: center;
+            min-height: 0;
+        }
+
+        .text-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 0;
+        }
+
+        .pre-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #EE1D52;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+
+        .main-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 56px;
+            line-height: 1.06;
+            color: #ffffff;
+            margin: 0 0 22px 0;
+        }
+
+        .description {
+            font-size: 18px;
+            line-height: 1.58;
+            color: #D1D5DB;
+            margin: 0 0 36px;
+            max-width: 540px;
+        }
+
+        .contact-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 18px;
+            padding: 20px 24px;
+            display: inline-flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 430px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+        }
+
+        .contact-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 26px;
+            line-height: 1.2;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .contact-email {
+            margin: 0;
+            font-size: 18px;
+            color: #9dd9df;
+            font-weight: 500;
+        }
+
+        .action-column {
+            flex: 0 0 470px;
+            min-height: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .steps-panel {
+            width: 100%;
+            background: linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            padding: 28px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+        }
+
+        .steps-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 2px 0;
+        }
+
+        .step-number {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 48px;
+            line-height: 0.9;
+            width: 42px;
+            flex-shrink: 0;
+            text-align: center;
+            margin-top: -2px;
+        }
+
+        .step-number.one {
+            color: #69C9D0;
+            text-shadow: 0 0 16px rgba(105, 201, 208, 0.65);
+        }
+
+        .step-number.two {
+            color: #EE1D52;
+            text-shadow: 0 0 16px rgba(238, 29, 82, 0.65);
+        }
+
+        .step-number.three {
+            color: #A78BFA;
+            text-shadow: 0 0 16px rgba(167, 139, 250, 0.65);
+        }
+
+        .step-text {
+            font-size: 18px;
+            line-height: 1.35;
+            color: #E5E7EB;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+    </style>
+</head>
+<body>
+<div class="slide-container">
+    <div class="accent-circle-1"></div>
+    <div class="accent-circle-2"></div>
+
+    <div class="content-wrapper">
+        <div class="text-column">
+            <p class="pre-title">Next Steps</p>
+            <h1 class="main-title">Ready to Scale Your<br/>TikTok Growth Engine?</h1>
+            <p class="description">
+                Don't let manual operations hold back your Smart+ potential. Book a personalized demo to see how XMP can automate your creative workflow and boost ROI.
+            </p>
+
+            <div class="contact-card">
+                <h3 class="contact-name">Jun Xing Qu</h3>
+                <p class="contact-email">junxing.qu@mobvista.com</p>
+            </div>
+        </div>
+
+        <div class="action-column">
+            <div class="steps-panel">
+                <h2 class="steps-title">Launch in 3 Steps</h2>
+                <div class="step-item">
+                    <div class="step-number one">1</div>
+                    <div class="step-text">Connect your TikTok accounts to XMP</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number two">2</div>
+                    <div class="step-text">Upload creative assets to shared library</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number three">3</div>
+                    <div class="step-text">Bulk launch your Smart+ campaigns</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
