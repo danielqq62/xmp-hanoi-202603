@@ -79,6 +79,32 @@ body {
   height: 100vh;
 }
 
+.presentation-shell.is-immersive .viewer-wrap {
+  padding: 0;
+}
+
+.presentation-shell.is-immersive .slide-stage {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.presentation-shell.is-immersive .slide-frame-wrap {
+  border-radius: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+.presentation-shell.is-immersive header,
+.presentation-shell.is-immersive .status-text,
+.presentation-shell.is-immersive .nav-arrow {
+  display: none;
+}
+
+.presentation-shell.is-immersive {
+  height: 100vh;
+}
+
 .nav-arrow {
   position: absolute;
   top: 50%;
@@ -122,13 +148,29 @@ body {
 
 @media (max-width: 900px) {
   .viewer-wrap {
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   .nav-arrow {
     width: 36px;
     height: 54px;
     font-size: 22px;
+  }
+}
+
+@media (max-width: 900px) {
+  .presentation-shell header,
+  .presentation-shell .status-text {
+    display: none;
+  }
+
+  .viewer-wrap {
+    padding: 0;
+  }
+
+  .slide-stage {
+    width: 100vw;
+    height: 100vh;
   }
 }

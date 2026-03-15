@@ -18,6 +18,7 @@
   const fullscreenBtn = document.getElementById('fullscreenBtn');
   const baseWidth = 1280;
   const baseHeight = 720;
+  const supportsFullscreen = Boolean(presentationShell.requestFullscreen);
 
   const updateUI = () => {
     frame.src = slidePaths[currentIndex];
@@ -51,7 +52,11 @@
 
     if (event.key === 'f' || event.key === 'F') {
       event.preventDefault();
-      if (!document.fullscreenElement) {
+      if (supportsFullscreen) {
+        if (!document.fullscreenElement) {
+          toggleFullscreen();
+        }
+      } else {
         toggleFullscreen();
       }
     }
@@ -82,12 +87,16 @@
 
   const updateFullscreenLabel = () => {
     const isFullscreen = document.fullscreenElement === presentationShell;
-    fullscreenBtn.textContent = isFullscreen ? 'Exit Fullscreen' : 'Fullscreen';
+    const isImmersive = presentationShell.classList.contains('is-immersive');
+    const isActive = supportsFullscreen ? isFullscreen : isImmersive;
+    fullscreenBtn.textContent = isActive ? 'Exit Fullscreen' : 'Fullscreen';
   };
 
   const toggleFullscreen = () => {
-    if (!presentationShell.requestFullscreen) {
-      statusText.textContent = 'Fullscreen is not supported in this browser.';
+    if (!supportsFullscreen) {
+      presentationShell.classList.toggle('is-immersive');
+      updateFullscreenLabel();
+      updateScale();
       return;
     }
 
@@ -102,12 +111,12 @@
     updateScale();
   });
 
-  if (!presentationShell.requestFullscreen) {
-    fullscreenBtn.disabled = true;
-    fullscreenBtn.textContent = 'Fullscreen N/A';
+  if (!supportsFullscreen) {
+    statusText.textContent = 'Fullscreen not supported on this device. Using immersive mode.';
   }
 
   window.addEventListener('resize', updateScale);
+  window.addEventListener('orientationchange', updateScale);
 
   updateUI();
   updateFullscreenLabel();
