@@ -11,6 +11,7 @@
   const presentationShell = document.getElementById('presentationShell');
   const slideStage = document.querySelector('.slide-stage');
   const slideWrap = document.querySelector('.slide-frame-wrap');
+  const viewerWrap = document.querySelector('.viewer-wrap');
   const indicator = document.getElementById('slideIndicator');
   const statusText = document.getElementById('statusText');
   const prevBtn = document.getElementById('prevBtn');
@@ -19,6 +20,7 @@
   const baseWidth = 1280;
   const baseHeight = 720;
   const supportsFullscreen = Boolean(presentationShell.requestFullscreen);
+  presentationShell.setAttribute('tabindex', '0');
 
   const updateUI = () => {
     frame.classList.add('is-loading');
@@ -37,10 +39,10 @@
     updateUI();
   };
 
-  prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
-  nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
-
-  document.addEventListener('keydown', (event) => {
+  const handleKeydown = (event) => {
+    if (event.defaultPrevented) {
+      return;
+    }
     if (event.key === 'ArrowLeft') {
       event.preventDefault();
       goTo(currentIndex - 1);
@@ -61,7 +63,27 @@
         toggleFullscreen();
       }
     }
-  });
+  };
+
+  prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
+  nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
+  document.addEventListener('keydown', handleKeydown);
+
+  if (viewerWrap) {
+    viewerWrap.addEventListener('click', (event) => {
+      presentationShell.focus({ preventScroll: true });
+      if (event.target.closest('button, a')) {
+        return;
+      }
+      const rect = viewerWrap.getBoundingClientRect();
+      const clickX = event.clientX - rect.left;
+      if (clickX < rect.width / 2) {
+        goTo(currentIndex - 1);
+      } else {
+        goTo(currentIndex + 1);
+      }
+    });
+  }
 
   const applySlideAnimations = () => {
     const doc = frame.contentDocument;
@@ -132,6 +154,9 @@
     statusText.textContent = `Loaded: ${slidePaths[currentIndex]}`;
     frame.classList.remove('is-loading');
     applySlideAnimations();
+    if (frame.contentWindow) {
+      frame.contentWindow.addEventListener('keydown', handleKeydown);
+    }
   });
 
   frame.addEventListener('error', () => {
@@ -177,6 +202,7 @@
   document.addEventListener('fullscreenchange', () => {
     updateFullscreenLabel();
     updateScale();
+    presentationShell.focus({ preventScroll: true });
   });
 
   if (!supportsFullscreen) {
@@ -185,6 +211,14 @@
 
   window.addEventListener('resize', updateScale);
   window.addEventListener('orientationchange', updateScale);
+  window.addEventListener('focus', () => {
+    presentationShell.focus({ preventScroll: true });
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      presentationShell.focus({ preventScroll: true });
+    }
+  });
 
   updateUI();
   updateFullscreenLabel();
