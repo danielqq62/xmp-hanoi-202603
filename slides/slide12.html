@@ -4,11 +4,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Creative Analytics with MMP Metrics (For Designers, Too)</title>
+<title>100x Faster Than Ads Manager: Bulk Creation</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
-<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
 <style>
         body {
             margin: 0;
@@ -16,375 +15,309 @@
             font-family: 'Inter', sans-serif;
             background-color: #0f0f0f;
             color: #ffffff;
+            overflow: hidden;
         }
+
         .slide-container {
             width: 1280px;
             height: 720px;
             position: relative;
-            overflow: hidden;
             background-color: #000000;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
         }
+
+        /* Background Effects */
+        .glow-center {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background-color: #EE1D52; /* TikTok Red */
+            border-radius: 50%;
+            filter: blur(180px);
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
         
-        /* Decorative Elements */
-        .decor-circle-top {
+        .glow-side {
             position: absolute;
             width: 400px;
             height: 400px;
-            background-color: #EE1D52;
+            background-color: #69C9D0; /* TikTok Cyan */
             border-radius: 50%;
             filter: blur(120px);
             opacity: 0.08;
-            top: -150px;
+            top: 100px;
             right: -100px;
             z-index: 0;
         }
-        .decor-circle-bottom {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background-color: #69C9D0;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.08;
-            bottom: -200px;
-            left: -100px;
-            z-index: 0;
-        }
 
-        /* Header */
-        .header {
-            z-index: 10;
-            padding: 40px 60px 20px 60px;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .slide-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: 48px;
-            line-height: 1.1;
-            margin: 0;
-            color: #ffffff;
-        }
-        
-        .slide-subtitle {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 18px;
-            color: #9CA3AF;
-            margin-top: 8px;
-        }
-
-        /* Main Content Grid */
-        .content-grid {
+        /* Content Layout */
+        .content-wrapper {
             z-index: 10;
             display: flex;
-            padding: 20px 60px 40px 60px;
-            gap: 40px;
             flex: 1;
-            height: calc(100% - 140px);
+            padding: 60px 80px;
+            align-items: center;
+            gap: 60px;
         }
 
-        /* Left Column */
-        .left-col {
+        /* Left Side: The Big Number */
+        .hero-metric-container {
             flex: 0 0 45%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 24px;
-        }
-
-        .context-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 24px;
-            backdrop-filter: blur(5px);
-        }
-
-        .context-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 20px;
-            color: #69C9D0;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .context-text {
-            font-size: 15px;
-            line-height: 1.6;
-            color: #D1D5DB;
-            margin: 0;
-        }
-
-        /* Right Column */
-        .right-col {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        /* Stats Grid */
-        .stats-row {
-            display: flex;
-            gap: 20px;
-            height: 140px;
-        }
-
-        .stat-card {
-            flex: 1;
-            background-color: rgba(31, 41, 55, 0.6);
-            border-radius: 12px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border-left: 4px solid #EE1D52;
-        }
-        
-        .stat-card.blue {
-            border-left-color: #0057FF;
-        }
-
-        .stat-value {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: 36px;
-            color: #ffffff;
-            margin-bottom: 4px;
-        }
-
-        .stat-label {
-            font-size: 13px;
-            color: #9CA3AF;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .chart-container {
-            flex: 1;
-            background-color: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            padding: 20px;
             position: relative;
         }
 
-        .trend-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
+        .metric-label-top {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 8px;
+            color: #9CA3AF;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
         }
-        
-        .trend-up {
-            background-color: rgba(16, 185, 129, 0.2);
-            color: #34D399;
-        }
-        
-        /* Custom for this slide */
-        .metric-pill {
+
+        .hero-number {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 180px;
+            line-height: 1;
+            color: #ffffff;
+            text-shadow: 0 0 40px rgba(238, 29, 82, 0.4);
+            margin: 0;
+            position: relative;
             display: inline-block;
-            padding: 2px 8px;
-            background: rgba(255,255,255,0.1);
+        }
+        
+        .hero-number span {
+            color: #EE1D52;
+        }
+
+        .metric-label-bottom {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 10px;
+        }
+
+        .metric-sub {
+            font-size: 18px;
+            color: #D1D5DB;
+            margin-top: 8px;
+            max-width: 400px;
+        }
+
+        /* Right Side: Feature Bullets */
+        .features-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 24px;
+            border-radius: 16px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        
+        .feature-item:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+            border-color: rgba(105, 201, 208, 0.3);
+        }
+
+        .icon-box {
+            min-width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .icon-cyan { background-color: rgba(105, 201, 208, 0.15); color: #69C9D0; }
+        .icon-purple { background-color: rgba(139, 92, 246, 0.15); color: #8B5CF6; }
+        .icon-blue { background-color: rgba(59, 130, 246, 0.15); color: #3B82F6; }
+
+        .feature-text-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: #ffffff;
+            margin: 0 0 6px 0;
+        }
+
+        .feature-desc {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #9CA3AF;
+            margin: 0;
+        }
+
+        /* Comparison Bar */
+        .comparison-bar {
+            position: absolute;
+            bottom: 40px;
+            left: 80px;
+            right: auto;
+            width: 38%;
+            max-width: 480px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 16px 24px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .comparison-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #9CA3AF;
+            white-space: nowrap;
+        }
+
+        .progress-track {
+            flex: 1;
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 4px;
-            font-size: 12px;
-            margin-right: 4px;
-            margin-bottom: 4px;
-            color: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #EE1D52;
+            width: 95%; /* Visual representation of speed */
+            border-radius: 4px;
+            position: relative;
+        }
+        
+        .progress-marker {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .time-label {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            color: #ffffff;
         }
 
     </style>
 </head>
 <body>
 <div class="slide-container">
-<div class="decor-circle-top"></div>
-<div class="decor-circle-bottom"></div>
-<!-- Header -->
-<div class="header">
-<h1 class="slide-title">Creative Analytics with MMP Metrics</h1>
-<p class="slide-subtitle">Empower designers with performance data without dashboard switching</p>
+<!-- Background Elements -->
+<div class="glow-center"></div>
+<div class="glow-side"></div>
+<!-- Main Content -->
+<div class="content-wrapper">
+<!-- Left: Hero Metric -->
+<div class="hero-metric-container">
+<p class="metric-label-top">Efficiency Gain</p>
+<h1 class="hero-number">10<span>x</span></h1>
+<p class="metric-label-bottom">Faster Campaign Setup</p>
+<p class="metric-sub">Compared to manual creation in Ads Manager. From hours of work to minutes of review.</p>
 </div>
-<!-- Content -->
-<div class="content-grid">
-<!-- Left Column: Narrative Context -->
-<div class="left-col">
-<div class="context-card">
-<div class="context-title">
-<i class="fas fa-link"></i>
-<span>Full-Funnel Visibility</span>
+<!-- Right: Feature List -->
+<div class="features-container">
+<h2 class="section-title">Scale Smart+ in One Click</h2>
+<!-- Feature 1 -->
+<div class="feature-item">
+<div class="icon-box icon-cyan">
+<i class="fas fa-layer-group"></i>
 </div>
-<p class="context-text">
-                        Link every creative asset directly to deep performance metrics. Designers can now see beyond CTR to actual business value like <span class="metric-pill">ROAS</span> <span class="metric-pill">LTV</span> <span class="metric-pill">D7 Retention</span> and <span class="metric-pill">In-App Events</span>.
-                    </p>
-</div>
-<div class="context-card">
-<div class="context-title">
-<i class="fas fa-table-columns"></i>
-<span>Unified Dashboard</span>
-</div>
-<p class="context-text">
-                        No more switching between TikTok Ads Manager, AppsFlyer/Adjust, and BI tools. XMP consolidates all data streams into one view, democratizing access for design teams to iterate faster.
-                    </p>
-</div>
-<div class="context-card">
-<div class="context-title">
-<i class="fas fa-lightbulb"></i>
-<span>Smart+ Optimization</span>
-</div>
-<p class="context-text">
-                        Filter creatives by learning phase status and automatically identify fatigue. The system highlights top-performing concepts, allowing teams to scale what works and refresh what doesn't.
-                    </p>
+<div class="feature-text-group">
+<h3 class="feature-title">Massive Bulk Creation</h3>
+<p class="feature-desc">Spin up 100s of ad groups and 1000s of ads in a single task. No more repetitive manual entry.</p>
 </div>
 </div>
-<!-- Right Column: Data & Visuals -->
-<div class="right-col">
-<!-- Top Stats Row -->
-<div class="stats-row">
-<div class="stat-card">
-<div class="trend-badge trend-up"><i class="fas fa-check mr-1"></i> Unified</div>
-<div class="stat-value">3-in-1</div>
-<div class="stat-label">Ads + MMP + BI Data View</div>
+<!-- Feature 2 -->
+<div class="feature-item">
+<div class="icon-box icon-purple">
+<i class="fas fa-copy"></i>
 </div>
-<div class="stat-card blue">
-<div class="trend-badge trend-up" style="background-color: rgba(59, 130, 246, 0.2); color: #60A5FA;"><i class="fas fa-bolt mr-1"></i> Faster</div>
-<div class="stat-value">Real-time</div>
-<div class="stat-label">Creative Performance Feedback</div>
+<div class="feature-text-group">
+<h3 class="feature-title">Smart Templates</h3>
+<p class="feature-desc">Save settings for geo, language, budget, and optimization goals. Reuse successful blueprints instantly.</p>
 </div>
 </div>
-<!-- Chart Container -->
-<div class="chart-container">
-<div style="font-size: 14px; color: #9CA3AF; margin-bottom: 10px; font-weight: 600;">Creative Performance Leaderboard (Revenue vs. Spend)</div>
-<div id="creativeChart" style="width: 100%; height: 200px;"></div>
+<!-- Feature 3 -->
+<div class="feature-item">
+<div class="icon-box icon-blue">
+<i class="fas fa-tags"></i>
+</div>
+<div class="feature-text-group">
+<h3 class="feature-title">Standardized Naming</h3>
+<p class="feature-desc">Pre-built naming conventions and labeling standards ensure clean data for every Smart+ experiment.</p>
 </div>
 </div>
 </div>
 </div>
-<script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var chartDom = document.getElementById('creativeChart');
-            var myChart = echarts.init(chartDom);
-            var option;
-
-            option = {
-                backgroundColor: 'transparent',
-                grid: {
-                    top: '15%',
-                    left: '5%',
-                    right: '15%',
-                    bottom: '10%',
-                    containLabel: true
-                },
-                tooltip: {
-                    trigger: 'axis',
-                    axisPointer: {
-                        type: 'shadow'
-                    }
-                },
-                legend: {
-                    data: ['Spend ($)', 'Revenue ($)'],
-                    textStyle: {
-                        color: '#9CA3AF'
-                    },
-                    top: 0,
-                    right: 0
-                },
-                xAxis: {
-                    type: 'value',
-                    name: 'USD',
-                    axisLine: {
-                        lineStyle: {
-                            color: '#4B5563'
-                        }
-                    },
-                    splitLine: {
-                         lineStyle: {
-                            color: 'rgba(255, 255, 255, 0.05)'
-                        }
-                    },
-                    axisLabel: {
-                        color: '#9CA3AF'
-                    }
-                },
-                yAxis: {
-                    type: 'category',
-                    data: ['Video A', 'Video B', 'Video C', 'Video D'],
-                    axisLabel: {
-                        color: '#D1D5DB',
-                        margin: 16
-                    },
-                    axisLine: {
-                        lineStyle: {
-                            color: 'rgba(255, 255, 255, 0.1)'
-                        }
-                    },
-                    axisTick: {
-                        show: false
-                    }
-                },
-                grid: {
-                    top: '15%',
-                    left: '5%',
-                    right: '28%',
-                    bottom: '10%',
-                    containLabel: true
-                },
-                series: [
-                    {
-                        name: 'Spend ($)',
-                        type: 'bar',
-                        label: {
-                            show: true
-                        },
-                         itemStyle: {
-                            color: '#69C9D0'
-                        },
-                        data: [3200, 2800, 1500, 4100]
-                    },
-                    {
-                        name: 'Revenue ($)',
-                        type: 'bar',
-                        label: {
-                            show: true
-                        },
-                        itemStyle: {
-                             color: '#EE1D52'
-                        },
-                        data: [6400, 900, 3450, 1200],
-                        markPoint: {
-                            symbol: 'roundRect',
-                            symbolSize: [130, 30],
-                            label: {
-                                color: '#111827',
-                                fontWeight: 700
-                            },
-                            itemStyle: {
-                                color: '#F59E0B'
-                            },
-                            data: [
-                                {
-                                    name: 'Winner',
-                                    coord: [6800, 'Video A'],
-                                    value: 'Winning! Scale it!',
-                                    label: { formatter: 'Winning! Scale it!' }
-                                }
-                            ]
-                        }
-                    }
-                ]
-            };
-
-            myChart.setOption(option);
-        });
-    </script>
+<!-- Comparison Visual -->
+<div class="comparison-bar">
+<span class="comparison-label">Setup Time Comparison:</span>
+<div style="display: flex; flex-direction: column; flex: 1; gap: 8px;">
+<!-- XMP Bar -->
+<div style="display: flex; align-items: center; gap: 10px;">
+<span style="font-size: 12px; color: #EE1D52; font-weight: 700; width: 80px;">XMP</span>
+<div class="progress-track">
+<div class="progress-fill" style="width: 5%; background-color: #EE1D52;"></div>
+</div>
+<span class="time-label">10 Mins</span>
+</div>
+<!-- Manual Bar -->
+<div style="display: flex; align-items: center; gap: 10px;">
+<span style="font-size: 12px; color: #9CA3AF; width: 80px;">Manual</span>
+<div class="progress-track">
+<div class="progress-fill" style="width: 100%; background-color: #4B5563;"></div>
+</div>
+<span class="time-label" style="color: #9CA3AF;">3 Hours</span>
+</div>
+</div>
+</div>
+</div>
 </body>
 </html>

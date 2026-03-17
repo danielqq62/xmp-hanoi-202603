@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Ready to Scale? Start Your Growth Engine</title>
+<title>Proven Impact: Real-World Efficiency Gains</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
 <style>
         body {
@@ -27,213 +28,303 @@
             flex-direction: column;
         }
 
-        .accent-circle-1 {
-            position: absolute;
-            width: 800px;
-            height: 800px;
-            background-color: #EE1D52;
-            border-radius: 50%;
-            filter: blur(180px);
-            opacity: 0.08;
-            top: -200px;
-            right: -200px;
-            z-index: 0;
-        }
-
-        .accent-circle-2 {
+        /* Background Effects */
+        .glow-red {
             position: absolute;
             width: 600px;
             height: 600px;
-            background-color: #69C9D0;
+            background-color: #EE1D52;
             border-radius: 50%;
             filter: blur(150px);
-            opacity: 0.06;
-            bottom: -150px;
-            left: -150px;
+            opacity: 0.08;
+            top: -200px;
+            right: -100px;
             z-index: 0;
         }
 
-        .content-wrapper {
+        .glow-purple {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background-color: #7B3FE4;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.06;
+            bottom: -150px;
+            left: -100px;
+            z-index: 0;
+        }
+
+        /* Header */
+        .header {
+            z-index: 10;
+            padding: 40px 80px 20px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .title-group {
+            flex: 1;
+        }
+
+        .title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 36px;
+            line-height: 1.2;
+            margin: 0 0 10px 0;
+            color: #ffffff;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #9CA3AF;
+            max-width: 800px;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Main Content Grid */
+        .content-grid {
             z-index: 10;
             flex: 1;
-            display: flex;
-            padding: 58px 80px;
-            gap: 70px;
-            align-items: center;
-            min-height: 0;
+            padding: 30px 80px 60px 80px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
         }
 
-        .text-column {
-            flex: 1;
+        .client-card {
+            background-color: rgba(31, 41, 55, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            min-height: 0;
+            justify-content: space-between;
+            height: 100%;
+            transition: all 0.3s ease;
         }
 
-        .pre-title {
+        .client-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .client-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #ffffff;
+        }
+
+        .client-info h3 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 16px;
-            color: #EE1D52;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 16px;
+            font-size: 18px;
+            margin: 0;
+            color: #ffffff;
         }
 
-        .main-title {
+        .client-info p {
+            font-size: 12px;
+            color: #9CA3AF;
+            margin: 2px 0 0 0;
+        }
+
+        .metric-box {
+            background-color: rgba(238, 29, 82, 0.1);
+            border: 1px solid rgba(238, 29, 82, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .metric-value {
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
-            font-size: 56px;
-            line-height: 1.06;
+            font-size: 32px;
+            line-height: 1;
             color: #ffffff;
-            margin: 0 0 22px 0;
+            margin: 0 0 4px 0;
         }
 
-        .description {
+        .metric-value span {
             font-size: 18px;
-            line-height: 1.58;
+            color: #EE1D52;
+        }
+
+        .metric-label {
+            font-size: 12px;
             color: #D1D5DB;
-            margin: 0 0 36px;
-            max-width: 540px;
-        }
-
-        .contact-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 18px;
-            padding: 20px 24px;
-            display: inline-flex;
-            flex-direction: column;
-            gap: 10px;
-            max-width: 430px;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
-        }
-
-        .contact-name {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 26px;
-            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             margin: 0;
-            color: #ffffff;
         }
 
-        .contact-email {
+        .achievement-list {
+            list-style: none;
+            padding: 0;
             margin: 0;
-            font-size: 18px;
-            color: #9dd9df;
-            font-weight: 500;
+            flex: 1;
         }
 
-        .action-column {
-            flex: 0 0 470px;
-            min-height: 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .steps-panel {
-            width: 100%;
-            background: linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 24px;
-            padding: 28px 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 22px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-        }
-
-        .steps-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: 0.02em;
-            margin: 0;
-            color: #ffffff;
-        }
-
-        .step-item {
+        .achievement-list li {
+            font-size: 13px;
+            color: #D1D5DB;
+            margin-bottom: 12px;
             display: flex;
             align-items: flex-start;
-            gap: 16px;
-            padding: 2px 0;
+            gap: 10px;
+            line-height: 1.4;
         }
 
-        .step-number {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: 48px;
-            line-height: 0.9;
-            width: 42px;
-            flex-shrink: 0;
-            text-align: center;
-            margin-top: -2px;
-        }
-
-        .step-number.one {
+        .achievement-list li i {
             color: #69C9D0;
-            text-shadow: 0 0 16px rgba(105, 201, 208, 0.65);
+            margin-top: 3px;
+            font-size: 12px;
         }
 
-        .step-number.two {
-            color: #EE1D52;
-            text-shadow: 0 0 16px rgba(238, 29, 82, 0.65);
+        .tag-container {
+            display: flex;
+            gap: 8px;
+            margin-top: 20px;
+            flex-wrap: wrap;
         }
 
-        .step-number.three {
-            color: #A78BFA;
-            text-shadow: 0 0 16px rgba(167, 139, 250, 0.65);
-        }
-
-        .step-text {
-            font-size: 18px;
-            line-height: 1.35;
-            color: #E5E7EB;
-            margin-top: 8px;
-            font-weight: 500;
+        .tag {
+            font-size: 10px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #9CA3AF;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
     </style>
 </head>
 <body>
 <div class="slide-container">
-    <div class="accent-circle-1"></div>
-    <div class="accent-circle-2"></div>
-
-    <div class="content-wrapper">
-        <div class="text-column">
-            <p class="pre-title">Next Steps</p>
-            <h1 class="main-title">Ready to Scale Your<br/>TikTok Growth Engine?</h1>
-            <p class="description">
-                Don't let manual operations hold back your Smart+ potential. Book a personalized demo to see how XMP can automate your creative workflow and boost ROI.
-            </p>
-
-            <div class="contact-card">
-                <h3 class="contact-name">Jun Xing Qu</h3>
-                <p class="contact-email">junxing.qu@mobvista.com</p>
-            </div>
-        </div>
-
-        <div class="action-column">
-            <div class="steps-panel">
-                <h2 class="steps-title">Launch in 3 Steps</h2>
-                <div class="step-item">
-                    <div class="step-number one">1</div>
-                    <div class="step-text">Connect your TikTok accounts to XMP</div>
-                </div>
-                <div class="step-item">
-                    <div class="step-number two">2</div>
-                    <div class="step-text">Upload creative assets to shared library</div>
-                </div>
-                <div class="step-item">
-                    <div class="step-number three">3</div>
-                    <div class="step-text">Bulk launch your Smart+ campaigns</div>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Background -->
+<div class="glow-red"></div>
+<div class="glow-purple"></div>
+<!-- Header -->
+<div class="header">
+<div class="title-group">
+<h1 class="title">Trusted by Top Vietnamese Publishers</h1>
+<p class="subtitle">Leading game studios achieve scalable growth and operational efficiency with XMP on TikTok.</p>
+</div>
+</div>
+<!-- Content Grid -->
+<div class="content-grid">
+<!-- Client 1: XGame -->
+<div class="client-card">
+<div>
+<div class="client-header">
+<div class="client-icon" style="background-color: #FF5722;">
+<i class="fas fa-gamepad"></i>
+</div>
+<div class="client-info">
+<h3>XGame Studio</h3>
+<p>Leading Studio (100+ Titles)</p>
+</div>
+</div>
+<div class="metric-box">
+<p class="metric-value">+30<span>%</span></p>
+<p class="metric-label">ROI Improvement</p>
+</div>
+<ul class="achievement-list">
+<li>
+<i class="fas fa-check-circle"></i>
+<p>Automated creative testing workflow across 50+ active campaigns.</p>
+</li>
+<li>
+<i class="fas fa-check-circle"></i>
+<p>Reduced manual ad setup time by 80% using bulk creation tools.</p>
+</li>
+</ul>
+</div>
+<div class="tag-container">
+<span class="tag">Gaming</span>
+<span class="tag">Global Scale</span>
+</div>
+</div>
+<!-- Client 2: Amobear -->
+<div class="client-card">
+<div>
+<div class="client-header">
+<div class="client-icon" style="background-color: #4CAF50;">
+<i class="fas fa-paw"></i>
+</div>
+<div class="client-info">
+<h3>Amobear</h3>
+<p>Top Publisher Since 2013</p>
+</div>
+</div>
+<div class="metric-box">
+<p class="metric-value">2x<span>Faster</span></p>
+<p class="metric-label">Creative Iteration</p>
+</div>
+<ul class="achievement-list">
+<li>
+<i class="fas fa-check-circle"></i>
+<p>Streamlined collaboration between design and UA teams via XMP library.</p>
+</li>
+<li>
+<i class="fas fa-check-circle"></i>
+<p>Scaled TikTok UA spend efficiently while maintaining stable ROAS.</p>
+</li>
+</ul>
+</div>
+<div class="tag-container">
+<span class="tag">Apps &amp; Games</span>
+<span class="tag">Creative Ops</span>
+</div>
+</div>
+<!-- Client 3: VTC Game -->
+<div class="client-card">
+<div>
+<div class="client-header">
+<div class="client-icon" style="background-color: #2196F3;">
+<i class="fas fa-trophy"></i>
+</div>
+<div class="client-info">
+<h3>VTC Game</h3>
+<p>Top 3 Publisher (Gov-backed)</p>
+</div>
+</div>
+<div class="metric-box">
+<p class="metric-value">100<span>%</span></p>
+<p class="metric-label">Data Visibility</p>
+</div>
+<ul class="achievement-list">
+<li>
+<i class="fas fa-check-circle"></i>
+<p>Unified view of TikTok ad spend and MMP attribution data.</p>
+</li>
+<li>
+<i class="fas fa-check-circle"></i>
+<p>Enabled data-driven decisions for large-scale Smart+ campaigns.</p>
+</li>
+</ul>
+</div>
+<div class="tag-container">
+<span class="tag">Enterprise</span>
+<span class="tag">Smart+</span>
+</div>
+</div>
+</div>
 </div>
 </body>
 </html>

@@ -4,10 +4,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Automation &amp; Intelligence: Scale Without Burnout</title>
+<title>Creative Analytics with MMP Metrics (For Designers, Too)</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <style>
         body {
             margin: 0;
@@ -15,250 +16,375 @@
             font-family: 'Inter', sans-serif;
             background-color: #0f0f0f;
             color: #ffffff;
-            overflow: hidden;
         }
-
         .slide-container {
             width: 1280px;
             height: 720px;
             position: relative;
-            background-color: #000000;
             overflow: hidden;
+            background-color: #000000;
             display: flex;
             flex-direction: column;
         }
-
-        /* Gradient Orbs - Using solid colors instead of gradients as requested */
-        .orb-top-right {
+        
+        /* Decorative Elements */
+        .decor-circle-top {
             position: absolute;
-            width: 700px;
-            height: 700px;
-            background-color: #25F4EE; /* TikTok Cyan */
+            width: 400px;
+            height: 400px;
+            background-color: #EE1D52;
             border-radius: 50%;
-            filter: blur(140px);
+            filter: blur(120px);
             opacity: 0.08;
-            top: -300px;
-            right: -200px;
+            top: -150px;
+            right: -100px;
             z-index: 0;
         }
-
-        .orb-bottom-left {
+        .decor-circle-bottom {
             position: absolute;
-            width: 600px;
-            height: 600px;
-            background-color: #FE2C55; /* TikTok Red */
+            width: 500px;
+            height: 500px;
+            background-color: #69C9D0;
             border-radius: 50%;
             filter: blur(120px);
             opacity: 0.08;
             bottom: -200px;
-            left: -150px;
+            left: -100px;
             z-index: 0;
         }
 
         /* Header */
         .header {
             z-index: 10;
-            padding: 50px 80px 10px 80px;
-            text-align: center;
-        }
-
-        .title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: 44px;
-            line-height: 1.2;
-            margin: 0 0 16px 0;
-            letter-spacing: -0.02em;
-            color: #ffffff; /* Replaced gradient text with solid color */
-        }
-
-        .subtitle {
-            font-size: 20px;
-            color: #9CA3AF;
-            max-width: 900px;
-            margin: 0 auto;
-            line-height: 1.5;
-        }
-
-        /* Main Content - 3 Column Grid */
-        .content-wrapper {
-            z-index: 10;
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px 60px 60px 60px;
-            gap: 40px;
-        }
-
-        .feature-card {
-            background-color: rgba(31, 41, 55, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 30px;
-            width: 340px;
-            height: 420px;
+            padding: 40px 60px 20px 60px;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
-            position: relative;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(12px);
         }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(255, 255, 255, 0.2);
-            background-color: rgba(31, 41, 55, 0.6);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Card Icon */
-        .card-icon-box {
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin-bottom: 24px;
-            position: relative;
-        }
-
-        /* Card Colors */
-        .card-blue .card-icon-box { background: rgba(59, 130, 246, 0.15); color: #60A5FA; border: 1px solid rgba(59, 130, 246, 0.3); }
-        .card-purple .card-icon-box { background: rgba(139, 92, 246, 0.15); color: #A78BFA; border: 1px solid rgba(139, 92, 246, 0.3); }
-        .card-pink .card-icon-box { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
-
-        .card-title {
+        
+        .slide-title {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 24px;
-            margin: 0 0 16px 0;
+            font-weight: 900;
+            font-size: 48px;
+            line-height: 1.1;
+            margin: 0;
             color: #ffffff;
         }
+        
+        .slide-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            color: #9CA3AF;
+            margin-top: 8px;
+        }
 
-        .card-desc {
+        /* Main Content Grid */
+        .content-grid {
+            z-index: 10;
+            display: flex;
+            padding: 20px 60px 40px 60px;
+            gap: 40px;
+            flex: 1;
+            height: calc(100% - 140px);
+        }
+
+        /* Left Column */
+        .left-col {
+            flex: 0 0 45%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .context-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+            backdrop-filter: blur(5px);
+        }
+
+        .context-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #69C9D0;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .context-text {
             font-size: 15px;
             line-height: 1.6;
             color: #D1D5DB;
-            margin: 0 0 24px 0;
-            flex-grow: 1;
-        }
-
-        /* Bullet Points inside Card */
-        .feature-list {
             margin: 0;
-            padding: 0;
-            list-style: none;
-            width: 100%;
         }
 
-        .feature-item {
+        /* Right Column */
+        .right-col {
+            flex: 1;
             display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            font-size: 14px;
-            color: #E5E7EB;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .feature-item i {
-            margin-right: 10px;
-            font-size: 12px;
+        /* Stats Grid */
+        .stats-row {
+            display: flex;
+            gap: 20px;
+            height: 140px;
         }
 
-        .card-blue .feature-item i { color: #60A5FA; }
-        .card-purple .feature-item i { color: #A78BFA; }
-        .card-pink .feature-item i { color: #F472B6; }
-
-        /* Automation Graphic - Connecting Line */
-        .connection-line {
-            position: absolute;
-            top: 50%;
-            left: 100px;
-            right: 100px;
-            height: 1px;
-            background-color: rgba(255,255,255,0.1); /* Removed gradient */
-            z-index: 5;
-            transform: translateY(40px);
+        .stat-card {
+            flex: 1;
+            background-color: rgba(31, 41, 55, 0.6);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 4px solid #EE1D52;
+        }
+        
+        .stat-card.blue {
+            border-left-color: #0057FF;
         }
 
-        /* Badge */
-        .ai-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 6px 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
+        .stat-value {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 36px;
             color: #ffffff;
-            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #9CA3AF;
             text-transform: uppercase;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            letter-spacing: 0.5px;
+        }
+
+        .chart-container {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .trend-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .trend-up {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: #34D399;
+        }
+        
+        /* Custom for this slide */
+        .metric-pill {
+            display: inline-block;
+            padding: 2px 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 4px;
+            margin-bottom: 4px;
+            color: #fff;
         }
 
     </style>
 </head>
 <body>
 <div class="slide-container">
-<!-- Background Elements -->
-<div class="orb-top-right"></div>
-<div class="orb-bottom-left"></div>
-<div class="connection-line"></div>
+<div class="decor-circle-top"></div>
+<div class="decor-circle-bottom"></div>
 <!-- Header -->
 <div class="header">
-<h1 class="title">Automation &amp; Intelligence: Scale Without Burnout</h1>
-<p class="subtitle">Let AI handle routine optimization while your team focuses on strategy and creative concepts.</p>
+<h1 class="slide-title">Creative Analytics with MMP Metrics</h1>
+<p class="slide-subtitle">Empower designers with performance data without dashboard switching</p>
 </div>
-<!-- Content Wrapper -->
-<div class="content-wrapper">
-<!-- Card 1: 24/7 Monitoring -->
-<div class="feature-card card-blue">
-<div class="ai-badge">Always On</div>
-<div class="card-icon-box">
-<i class="fas fa-eye"></i>
+<!-- Content -->
+<div class="content-grid">
+<!-- Left Column: Narrative Context -->
+<div class="left-col">
+<div class="context-card">
+<div class="context-title">
+<i class="fas fa-link"></i>
+<span>Full-Funnel Visibility</span>
 </div>
-<h3 class="card-title">24/7&nbsp;Smart&nbsp;Monitoring</h3>
-<p class="card-desc">Continuous surveillance of your campaign health, catching anomalies before they drain your budget.</p>
-<ul class="feature-list">
-<li class="feature-item"><i class="fas fa-check-circle"></i> Instant alerts for spend spikes</li>
-<li class="feature-item"><i class="fas fa-check-circle"></i> Detect zero-install ad groups</li>
-<li class="feature-item"><i class="fas fa-check-circle"></i> Monitor ROAS thresholds hourly</li>
-</ul>
+<p class="context-text">
+                        Link every creative asset directly to deep performance metrics. Designers can now see beyond CTR to actual business value like <span class="metric-pill">ROAS</span> <span class="metric-pill">LTV</span> <span class="metric-pill">D7 Retention</span> and <span class="metric-pill">In-App Events</span>.
+                    </p>
 </div>
-<!-- Card 2: Budget Autopilot -->
-<div class="feature-card card-purple">
-<div class="ai-badge">Auto-Scale</div>
-<div class="card-icon-box">
-<i class="fas fa-robot"></i>
+<div class="context-card">
+<div class="context-title">
+<i class="fas fa-table-columns"></i>
+<span>Unified Dashboard</span>
 </div>
-<h3 class="card-title">Budget Autopilot</h3>
-<p class="card-desc">Automatically allocate budget to top performers and scale winners based on your specific KPI guardrails.</p>
-<ul class="feature-list">
-<li class="feature-item"><i class="fas fa-check-circle"></i> Scale winners by +20% daily</li>
-<li class="feature-item"><i class="fas fa-check-circle"></i> Cut losers with low IPM/CTR</li>
-<li class="feature-item"><i class="fas fa-check-circle"></i> Learning phase protection rules</li>
-</ul>
+<p class="context-text">
+                        No more switching between TikTok Ads Manager, AppsFlyer/Adjust, and BI tools. XMP consolidates all data streams into one view, democratizing access for design teams to iterate faster.
+                    </p>
 </div>
-<!-- Card 3: Creative Rotation -->
-<div class="feature-card card-pink">
-<div class="ai-badge">Anti-Fatigue</div>
-<div class="card-icon-box">
-<i class="fas fa-sync-alt"></i>
+<div class="context-card">
+<div class="context-title">
+<i class="fas fa-lightbulb"></i>
+<span>Smart+ Optimization</span>
 </div>
-<h3 class="card-title">Creative Rotation</h3>
-<p class="card-desc">Combat ad fatigue by automatically rotating in fresh creatives when performance dips below benchmarks.</p>
-<ul class="feature-list">
-<li class="feature-item"><i class="fas fa-check-circle"></i> Auto-refresh fatigued ads</li>
-<li class="feature-item"><i class="fas fa-check-circle"></i> Test new hooks systematically</li>
-<li class="feature-item"><i class="fas fa-check-circle"></i> Maintain steady delivery volume</li>
-</ul>
+<p class="context-text">
+                        Filter creatives by learning phase status and automatically identify fatigue. The system highlights top-performing concepts, allowing teams to scale what works and refresh what doesn't.
+                    </p>
 </div>
 </div>
+<!-- Right Column: Data & Visuals -->
+<div class="right-col">
+<!-- Top Stats Row -->
+<div class="stats-row">
+<div class="stat-card">
+<div class="trend-badge trend-up"><i class="fas fa-check mr-1"></i> Unified</div>
+<div class="stat-value">3-in-1</div>
+<div class="stat-label">Ads + MMP + BI Data View</div>
 </div>
+<div class="stat-card blue">
+<div class="trend-badge trend-up" style="background-color: rgba(59, 130, 246, 0.2); color: #60A5FA;"><i class="fas fa-bolt mr-1"></i> Faster</div>
+<div class="stat-value">Real-time</div>
+<div class="stat-label">Creative Performance Feedback</div>
+</div>
+</div>
+<!-- Chart Container -->
+<div class="chart-container">
+<div style="font-size: 14px; color: #9CA3AF; margin-bottom: 10px; font-weight: 600;">Creative Performance Leaderboard (Revenue vs. Spend)</div>
+<div id="creativeChart" style="width: 100%; height: 200px;"></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var chartDom = document.getElementById('creativeChart');
+            var myChart = echarts.init(chartDom);
+            var option;
+
+            option = {
+                backgroundColor: 'transparent',
+                grid: {
+                    top: '15%',
+                    left: '5%',
+                    right: '15%',
+                    bottom: '10%',
+                    containLabel: true
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                legend: {
+                    data: ['Spend ($)', 'Revenue ($)'],
+                    textStyle: {
+                        color: '#9CA3AF'
+                    },
+                    top: 0,
+                    right: 0
+                },
+                xAxis: {
+                    type: 'value',
+                    name: 'USD',
+                    axisLine: {
+                        lineStyle: {
+                            color: '#4B5563'
+                        }
+                    },
+                    splitLine: {
+                         lineStyle: {
+                            color: 'rgba(255, 255, 255, 0.05)'
+                        }
+                    },
+                    axisLabel: {
+                        color: '#9CA3AF'
+                    }
+                },
+                yAxis: {
+                    type: 'category',
+                    data: ['Video A', 'Video B', 'Video C', 'Video D'],
+                    axisLabel: {
+                        color: '#D1D5DB',
+                        margin: 16
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    }
+                },
+                grid: {
+                    top: '15%',
+                    left: '5%',
+                    right: '28%',
+                    bottom: '10%',
+                    containLabel: true
+                },
+                series: [
+                    {
+                        name: 'Spend ($)',
+                        type: 'bar',
+                        label: {
+                            show: true
+                        },
+                         itemStyle: {
+                            color: '#69C9D0'
+                        },
+                        data: [3200, 2800, 1500, 4100]
+                    },
+                    {
+                        name: 'Revenue ($)',
+                        type: 'bar',
+                        label: {
+                            show: true
+                        },
+                        itemStyle: {
+                             color: '#EE1D52'
+                        },
+                        data: [6400, 900, 3450, 1200],
+                        markPoint: {
+                            symbol: 'roundRect',
+                            symbolSize: [130, 30],
+                            label: {
+                                color: '#111827',
+                                fontWeight: 700
+                            },
+                            itemStyle: {
+                                color: '#F59E0B'
+                            },
+                            data: [
+                                {
+                                    name: 'Winner',
+                                    coord: [6800, 'Video A'],
+                                    value: 'Winning! Scale it!',
+                                    label: { formatter: 'Winning! Scale it!' }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            };
+
+            myChart.setOption(option);
+        });
+    </script>
 </body>
 </html>

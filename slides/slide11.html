@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Creative Ops: Central Library and Access Control</title>
+<title>Deep TikTok Integration: Smart+ End-to-End</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
@@ -28,30 +28,30 @@
             flex-direction: column;
         }
 
-        /* Background Accents - Solid colors with blur, no gradients */
-        .accent-blur-1 {
+        /* Gradient Orbs */
+        .orb-top-right {
             position: absolute;
             width: 600px;
             height: 600px;
-            background-color: #7B3FE4; /* Purple */
+            background-color: #20B5BA; /* TikTok Cyan-ish */
             border-radius: 50%;
-            filter: blur(150px);
-            opacity: 0.08;
+            filter: blur(120px);
+            opacity: 0.1;
             top: -200px;
-            left: -100px;
+            right: -100px;
             z-index: 0;
         }
 
-        .accent-blur-2 {
+        .orb-bottom-left {
             position: absolute;
             width: 500px;
             height: 500px;
-            background-color: #EE1D52; /* Red */
+            background-color: #EE1D52; /* TikTok Red */
             border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.06;
-            bottom: -100px;
-            right: -100px;
+            filter: blur(100px);
+            opacity: 0.08;
+            bottom: -150px;
+            left: -100px;
             z-index: 0;
         }
 
@@ -59,6 +59,7 @@
         .header {
             z-index: 10;
             padding: 40px 80px 20px 80px;
+            text-align: center;
         }
 
         .title {
@@ -66,7 +67,7 @@
             font-weight: 900;
             font-size: 42px;
             line-height: 1.2;
-            margin: 0 0 10px 0;
+            margin: 0 0 12px 0;
             letter-spacing: -0.02em;
         }
 
@@ -74,297 +75,199 @@
             font-size: 18px;
             color: #9CA3AF;
             max-width: 800px;
+            margin: 0 auto;
             line-height: 1.5;
-            margin: 0;
         }
 
-        /* Main Content Layout */
-        .content-grid {
+        /* Process Diagram */
+        .process-container {
             z-index: 10;
-            display: flex;
             flex: 1;
-            padding: 20px 80px 60px 80px;
-            gap: 60px;
+            display: flex;
             align-items: center;
+            justify-content: center;
+            padding: 20px 60px 60px 60px;
+            position: relative;
         }
 
-        /* Left Column: Visual Diagram */
-        .visual-container {
-            flex: 0 0 45%;
-            height: 420px;
-            background-color: rgba(31, 41, 55, 0.4);
+        .step-card {
+            background-color: rgba(31, 41, 55, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            position: relative;
+            border-radius: 16px;
+            padding: 24px;
+            width: 260px;
+            height: 320px;
             display: flex;
             flex-direction: column;
-            padding: 20px;
-        }
-
-        /* Mock UI Elements for Library */
-        .ui-header {
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 15px;
-        }
-
-        .ui-search {
-            width: 60%;
-            height: 30px;
-            background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            padding: 0 10px;
-            font-size: 12px;
-            color: #6B7280;
-        }
-
-        .ui-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            flex: 1;
-        }
-
-        .ui-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            height: 90px;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid transparent;
-        }
-
-        .ui-card.active {
-            border-color: #EE1D52;
-            background-color: rgba(238, 29, 82, 0.1);
-        }
-
-        .ui-card-tag {
-            position: absolute;
-            bottom: 6px;
-            left: 6px;
-            font-size: 9px;
-            padding: 2px 6px;
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 4px;
-            color: #ffffff;
-        }
-
-        /* Access Control Badge Overlay */
-        .access-badge {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(15, 15, 15, 0.95);
-            border: 1px solid #7B3FE4;
-            border-radius: 12px;
-            padding: 20px;
-            width: 280px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            z-index: 20;
+            position: relative;
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
-        .badge-icon {
-            font-size: 24px;
-            color: #7B3FE4;
-            margin-bottom: 10px;
+        .step-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
-        .badge-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 16px;
-            margin: 0 0 8px 0;
-            color: #ffffff;
-        }
-
-        .role-list {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .role-chip {
-            font-size: 10px;
-            padding: 4px 8px;
-            border-radius: 12px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #D1D5DB;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .role-chip.admin { color: #EE1D52; border-color: rgba(238, 29, 82, 0.3); }
-        .role-chip.editor { color: #69C9D0; border-color: rgba(105, 201, 208, 0.3); }
-
-        /* Right Column: Features List */
-        .features-list {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .feature-item {
-            display: flex;
-            gap: 20px;
-            padding: 20px;
-            border-radius: 12px;
-            background-color: transparent;
-            transition: background-color 0.2s;
-            border-left: 3px solid transparent;
-        }
-
-        .feature-item:hover {
-            background-color: rgba(255, 255, 255, 0.03);
-            border-left-color: #69C9D0;
-        }
-
-        .icon-wrapper {
-            width: 48px;
-            height: 48px;
-            min-width: 48px;
-            border-radius: 12px;
+        .step-icon-wrapper {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 28px;
+            margin-bottom: 20px;
+            position: relative;
             background-color: rgba(255, 255, 255, 0.05);
         }
 
-        /* Specific Icon Colors */
-        .icon-upload { color: #69C9D0; background-color: rgba(105, 201, 208, 0.15); }
-        .icon-lock { color: #8B5CF6; background-color: rgba(139, 92, 246, 0.15); }
-        .icon-tag { color: #F59E0B; background-color: rgba(245, 158, 11, 0.15); }
-        .icon-history { color: #3B82F6; background-color: rgba(59, 130, 246, 0.15); }
-
-        .text-content {
-            flex: 1;
+        .step-number {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 24px;
+            height: 24px;
+            background-color: #ffffff;
+            color: #000000;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
         }
 
-        .feature-title {
+        .step-title {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
             font-size: 18px;
+            margin: 0 0 12px 0;
             color: #ffffff;
-            margin: 0 0 6px 0;
         }
 
-        .feature-desc {
+        .step-desc {
             font-size: 14px;
-            line-height: 1.5;
-            color: #9CA3AF;
+            line-height: 1.6;
+            color: #D1D5DB;
             margin: 0;
+            padding: 0 10px;
         }
 
-        /* Connecting Lines visual aid */
-        .connection-line {
-            position: absolute;
-            top: 50%;
-            left: 45%; /* End of left col */
-            width: 60px; /* Gap width */
+        /* Connectors */
+        .connector {
+            flex: 1;
             height: 2px;
-            background-color: rgba(255, 255, 255, 0.1);
-            display: none; /* Hidden for cleaner look, optional */
+            background-color: rgba(255, 255, 255, 0.15);
+            margin: 0 10px;
+            position: relative;
         }
+
+        .connector::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 8px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Color Themes */
+        .theme-cyan .step-icon-wrapper { color: #20B5BA; border: 1px solid rgba(32, 181, 186, 0.3); }
+        .theme-blue .step-icon-wrapper { color: #3B82F6; border: 1px solid rgba(59, 130, 246, 0.3); }
+        .theme-purple .step-icon-wrapper { color: #8B5CF6; border: 1px solid rgba(139, 92, 246, 0.3); }
+        .theme-pink .step-icon-wrapper { color: #EC4899; border: 1px solid rgba(236, 72, 153, 0.3); }
+
+        /* Bottom Status Bar */
+        .status-bar {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 40px;
+            padding: 12px 30px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #9CA3AF;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .dot-green { background-color: #10B981; }
+        .dot-blue { background-color: #3B82F6; }
 
     </style>
 </head>
 <body>
 <div class="slide-container">
 <!-- Background Elements -->
-<div class="accent-blur-1"></div>
-<div class="accent-blur-2"></div>
+<div class="orb-top-right"></div>
+<div class="orb-bottom-left"></div>
 <!-- Header -->
 <div class="header">
-<h1 class="title">Creative Ops: Central Library and Access Control</h1>
-<p class="subtitle">Empower your team with a unified asset hub designed for security, collaboration, and reuse.</p>
+<h1 class="title">Deep TikTok Integration: Smart+ End-to-End</h1>
+<p class="subtitle">A unified workspace to build, launch, and analyze campaigns without leaving XMP.</p>
 </div>
-<!-- Main Content Grid -->
-<div class="content-grid">
-<!-- Left: Visual Diagram -->
-<div class="visual-container">
-<!-- Mock UI Header -->
-<div class="ui-header">
-<div style="font-weight: 700; font-size: 14px; color: #fff;">XMP Library</div>
-<div class="ui-search">
-<i class="fas fa-search" style="margin-right: 8px;"></i> Search tags...
-                    </div>
-</div>
-<!-- Mock UI Grid -->
-<div class="ui-grid">
-<div class="ui-card"><div class="ui-card-tag">Hook A</div></div>
-<div class="ui-card active"><div class="ui-card-tag">Hook B</div></div>
-<div class="ui-card"><div class="ui-card-tag">Gameplay</div></div>
-<div class="ui-card"><div class="ui-card-tag">UGC</div></div>
-<div class="ui-card"><div class="ui-card-tag">Drama</div></div>
-<div class="ui-card active"><div class="ui-card-tag">Winner</div></div>
-<div class="ui-card"><div class="ui-card-tag">V2.0</div></div>
-<div class="ui-card"><div class="ui-card-tag">Intro</div></div>
-<div class="ui-card"><div class="ui-card-tag">Endcard</div></div>
-</div>
-<!-- Access Badge Overlay -->
-<div class="access-badge">
-<div class="badge-icon"><i class="fas fa-user-shield"></i></div>
-<p class="badge-title">Role-Based Access</p>
-<div style="font-size: 12px; color: #9CA3AF; margin-bottom: 10px;">Secure collaboration across teams</div>
-<div class="role-list">
-<span class="role-chip admin">Admin</span>
-<span class="role-chip editor">UA Mgr</span>
-<span class="role-chip">Designer</span>
-<span class="role-chip">Agency</span>
-</div>
-</div>
-</div>
-<!-- Right: Features List -->
-<div class="features-list">
-<!-- Feature 1 -->
-<div class="feature-item">
-<div class="icon-wrapper icon-upload">
+<!-- Process Diagram -->
+<div class="process-container">
+<!-- Step 1: Ingest -->
+<div class="step-card theme-cyan">
+<div class="step-icon-wrapper">
 <i class="fas fa-cloud-upload-alt"></i>
+<div class="step-number">1</div>
 </div>
-<div class="text-content">
-<h3 class="feature-title">Seamless Ingestion</h3>
-<p class="feature-desc">Upload creatives via web or XMP API directly into shared team libraries. Never lose a file in local folders again.</p>
+<h3 class="step-title">Bulk Asset Ingestion</h3>
+<p class="step-desc">Upload videos once via API or web. Auto-tag with metadata and map to multiple ad groups instantly.</p>
 </div>
+<div class="connector"></div>
+<!-- Step 2: Build -->
+<div class="step-card theme-blue">
+<div class="step-icon-wrapper">
+<i class="fas fa-hammer"></i>
+<div class="step-number">2</div>
 </div>
-<!-- Feature 2 -->
-<div class="feature-item">
-<div class="icon-wrapper icon-lock">
-<i class="fas fa-shield-alt"></i>
+<h3 class="step-title">Smart+ Creation</h3>
+<p class="step-desc">Create Smart+ App campaigns, ad groups, and ads via API. Auto-naming and unified taxonomy built-in.</p>
 </div>
-<div class="text-content">
-<h3 class="feature-title">Granular Access Control</h3>
-<p class="feature-desc">Define permissions by app, market, team, or partner. Safely collaborate with external agencies without exposing sensitive data.</p>
+<div class="connector"></div>
+<!-- Step 3: Map -->
+<div class="step-card theme-purple">
+<div class="step-icon-wrapper">
+<i class="fas fa-project-diagram"></i>
+<div class="step-number">3</div>
 </div>
+<h3 class="step-title">Event Mapping</h3>
+<p class="step-desc">Pull MMP/SDK events directly. Align ROAS, retention, and LTV views with creative data.</p>
 </div>
-<!-- Feature 3 -->
-<div class="feature-item">
-<div class="icon-wrapper icon-tag">
-<i class="fas fa-tags"></i>
+<div class="connector"></div>
+<!-- Step 4: Analyze -->
+<div class="step-card theme-pink">
+<div class="step-icon-wrapper">
+<i class="fas fa-chart-line"></i>
+<div class="step-number">4</div>
 </div>
-<div class="text-content">
-<h3 class="feature-title">Rich Metadata Tagging</h3>
-<p class="feature-desc">Tag assets by concept, hook, language, designer, actor, or version. Build a structured database for deep analysis.</p>
-</div>
-</div>
-<!-- Feature 4 -->
-<div class="feature-item">
-<div class="icon-wrapper icon-history">
-<i class="fas fa-code-branch"></i>
-</div>
-<div class="text-content">
-<h3 class="feature-title">Version Lineage &amp; Reuse</h3>
-<p class="feature-desc">Track creative iterations and reuse top performers across campaigns. Upload once, deploy everywhere.</p>
-</div>
-</div>
+<h3 class="step-title">Unified Reporting</h3>
+<p class="step-desc">Analyze performance across app, geo, language, and hook without dashboard switching.</p>
 </div>
 </div>
 </div>

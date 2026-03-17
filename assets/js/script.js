@@ -1,5 +1,5 @@
 (() => {
-  const totalSlides = 17;
+  const totalSlides = 19;
   const slidePaths = Array.from({ length: totalSlides }, (_, i) => {
     const slideNumber = i + 1;
     return `slides/slide${slideNumber}.html`;

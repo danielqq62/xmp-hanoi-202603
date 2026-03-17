@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Exclusive Event Offers: Start Your Growth Engine</title>
+<title>Automation &amp; Intelligence: Scale Without Burnout</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
@@ -28,301 +28,177 @@
             flex-direction: column;
         }
 
-        /* Background Accents */
-        .accent-blur-1 {
+        /* Gradient Orbs - Using solid colors instead of gradients as requested */
+        .orb-top-right {
             position: absolute;
-            width: 600px;
-            height: 600px;
-            background-color: #7B3FE4; /* Purple */
+            width: 700px;
+            height: 700px;
+            background-color: #25F4EE; /* TikTok Cyan */
             border-radius: 50%;
-            filter: blur(150px);
+            filter: blur(140px);
             opacity: 0.08;
-            top: -200px;
-            left: -100px;
+            top: -300px;
+            right: -200px;
             z-index: 0;
         }
 
-        .accent-blur-2 {
+        .orb-bottom-left {
             position: absolute;
-            width: 500px;
-            height: 500px;
-            background-color: #EE1D52; /* Red */
+            width: 600px;
+            height: 600px;
+            background-color: #FE2C55; /* TikTok Red */
             border-radius: 50%;
             filter: blur(120px);
-            opacity: 0.06;
-            bottom: -100px;
-            right: -100px;
+            opacity: 0.08;
+            bottom: -200px;
+            left: -150px;
             z-index: 0;
         }
 
         /* Header */
         .header {
             z-index: 10;
-            padding: 40px 80px 20px 80px;
+            padding: 50px 80px 10px 80px;
+            text-align: center;
         }
 
         .title {
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
-            font-size: 42px;
+            font-size: 44px;
             line-height: 1.2;
-            margin: 0 0 10px 0;
+            margin: 0 0 16px 0;
             letter-spacing: -0.02em;
+            color: #ffffff; /* Replaced gradient text with solid color */
         }
 
         .subtitle {
-            font-size: 18px;
+            font-size: 20px;
             color: #9CA3AF;
-            max-width: 800px;
+            max-width: 900px;
+            margin: 0 auto;
             line-height: 1.5;
-            margin: 0;
         }
 
-        /* Main Content Layout */
-        .content-grid {
+        /* Main Content - 3 Column Grid */
+        .content-wrapper {
             z-index: 10;
-            display: flex;
             flex: 1;
-            padding: 20px 80px 60px 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 60px 60px 60px;
             gap: 40px;
-            align-items: stretch;
         }
 
-        /* Left Column: Offer Cards */
-        .offers-container {
-            flex: 1;
+        .feature-card {
+            background-color: rgba(31, 41, 55, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 30px;
+            width: 340px;
+            height: 420px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        /* Offer Card Styles */
-        .offer-card {
-            background-color: rgba(31, 41, 55, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 25px;
-            display: flex;
-            gap: 20px;
+            align-items: flex-start;
+            text-align: left;
             position: relative;
-            transition: transform 0.2s, border-color 0.2s;
-            overflow: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(12px);
         }
 
-        .offer-card:hover {
-            transform: translateY(-2px);
+        .feature-card:hover {
+            transform: translateY(-8px);
             border-color: rgba(255, 255, 255, 0.2);
             background-color: rgba(31, 41, 55, 0.6);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        .offer-card.primary {
-            border-color: rgba(123, 63, 228, 0.3);
-            background-color: rgba(123, 63, 228, 0.05);
-        }
-
-        .offer-card.secondary {
-            border-color: rgba(238, 29, 82, 0.3);
-            background-color: rgba(238, 29, 82, 0.05);
-        }
-
-        .offer-icon-wrapper {
-            width: 60px;
-            height: 60px;
-            min-width: 60px;
-            border-radius: 12px;
+        /* Card Icon */
+        .card-icon-box {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 28px;
+            margin-bottom: 24px;
+            position: relative;
         }
 
-        .primary .offer-icon-wrapper {
-            background-color: rgba(123, 63, 228, 0.15);
-            color: #9F7AEA;
-        }
+        /* Card Colors */
+        .card-blue .card-icon-box { background: rgba(59, 130, 246, 0.15); color: #60A5FA; border: 1px solid rgba(59, 130, 246, 0.3); }
+        .card-purple .card-icon-box { background: rgba(139, 92, 246, 0.15); color: #A78BFA; border: 1px solid rgba(139, 92, 246, 0.3); }
+        .card-pink .card-icon-box { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
 
-        .secondary .offer-icon-wrapper {
-            background-color: rgba(238, 29, 82, 0.15);
-            color: #F87171;
-        }
-
-        .offer-content {
-            flex: 1;
-        }
-
-        .offer-badge {
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 8px;
-        }
-
-        .primary .offer-badge {
-            background-color: #7B3FE4;
-            color: white;
-        }
-
-        .secondary .offer-badge {
-            background-color: #EE1D52;
-            color: white;
-        }
-
-        .offer-title {
+        .card-title {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 20px;
-            margin: 0 0 8px 0;
+            font-size: 24px;
+            margin: 0 0 16px 0;
             color: #ffffff;
         }
 
-        .offer-features {
+        .card-desc {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #D1D5DB;
+            margin: 0 0 24px 0;
+            flex-grow: 1;
+        }
+
+        /* Bullet Points inside Card */
+        .feature-list {
             margin: 0;
             padding: 0;
             list-style: none;
-        }
-
-        .offer-features li {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            color: #D1D5DB;
-            margin-bottom: 6px;
-        }
-
-        .offer-features li i {
-            font-size: 12px;
-        }
-
-        .primary .offer-features li i { color: #9F7AEA; }
-        .secondary .offer-features li i { color: #F87171; }
-
-        .offer-price {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 24px;
-            color: #ffffff;
-            margin-top: 10px;
-            display: block;
-        }
-
-        .offer-price span {
-            font-size: 14px;
-            font-weight: 400;
-            color: #9CA3AF;
-        }
-
-        .price-compare {
-            margin-top: 6px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .price-compare .label {
-            padding: 4px 8px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #E5E7EB;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
-            font-size: 10px;
-        }
-
-        .price-compare .value {
-            color: #FCA5A5;
-        }
-
-        .price-compare .arrow {
-            color: #F59E0B;
-            font-size: 14px;
-        }
-
-        /* Right Column: QR & CTA */
-        .cta-container {
-            flex: 0 0 35%;
-            background-color: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
-
-        .qr-box {
-            width: 200px;
-            height: 200px;
-            background-color: white;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .qr-image {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
         }
 
-        .cta-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 22px;
-            margin: 0 0 10px 0;
-            color: #ffffff;
-        }
-
-        .cta-desc {
-            font-size: 14px;
-            color: #9CA3AF;
-            margin: 0 0 25px 0;
-            line-height: 1.5;
-        }
-
-        .cta-button {
-            background-color: #ffffff;
-            color: #000000;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 14px;
-            text-decoration: none;
-            display: inline-flex;
+        .feature-item {
+            display: flex;
             align-items: center;
-            gap: 8px;
-            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #E5E7EB;
         }
 
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        .feature-item i {
+            margin-right: 10px;
+            font-size: 12px;
         }
 
-        .limited-tag {
+        .card-blue .feature-item i { color: #60A5FA; }
+        .card-purple .feature-item i { color: #A78BFA; }
+        .card-pink .feature-item i { color: #F472B6; }
+
+        /* Automation Graphic - Connecting Line */
+        .connection-line {
+            position: absolute;
+            top: 50%;
+            left: 100px;
+            right: 100px;
+            height: 1px;
+            background-color: rgba(255,255,255,0.1); /* Removed gradient */
+            z-index: 5;
+            transform: translateY(40px);
+        }
+
+        /* Badge */
+        .ai-badge {
             position: absolute;
             top: 20px;
             right: 20px;
-            background-color: #F59E0B;
-            color: #000;
-            font-size: 10px;
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 11px;
             font-weight: 700;
-            padding: 4px 8px;
-            border-radius: 4px;
+            color: #ffffff;
+            letter-spacing: 0.05em;
             text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
     </style>
@@ -330,65 +206,57 @@
 <body>
 <div class="slide-container">
 <!-- Background Elements -->
-<div class="accent-blur-1"></div>
-<div class="accent-blur-2"></div>
+<div class="orb-top-right"></div>
+<div class="orb-bottom-left"></div>
+<div class="connection-line"></div>
 <!-- Header -->
 <div class="header">
-<h1 class="title">Exclusive Event Offers</h1>
-<p class="subtitle">Special promotion packages for event attendees to kickstart your TikTok growth engine.</p>
+<h1 class="title">Automation &amp; Intelligence: Scale Without Burnout</h1>
+<p class="subtitle">Let AI handle routine optimization while your team focuses on strategy and creative concepts.</p>
 </div>
-<!-- Main Content Grid -->
-<div class="content-grid">
-<!-- Left: Offer Cards -->
-<div class="offers-container">
-<!-- Offer 1 -->
-<div class="offer-card primary">
-<div class="offer-icon-wrapper">
-<i class="fas fa-rocket"></i>
+<!-- Content Wrapper -->
+<div class="content-wrapper">
+<!-- Card 1: 24/7 Monitoring -->
+<div class="feature-card card-blue">
+<div class="ai-badge">Always On</div>
+<div class="card-icon-box">
+<i class="fas fa-eye"></i>
 </div>
-<div class="offer-content">
-<div class="offer-badge">Offer 1: Free Trial</div>
-<h3 class="offer-title">30-Day XMP Full Access</h3>
-<ul class="offer-features">
-<li><i class="fas fa-check"></i> TikTok API Integration &amp; Smart+ Support</li>
-<li><i class="fas fa-check"></i> 3 User Seats (Admin, UA Manager, Designer)</li>
-<li><i class="fas fa-check"></i> Full functions of XMP</li>
+<h3 class="card-title">24/7&nbsp;Smart&nbsp;Monitoring</h3>
+<p class="card-desc">Continuous surveillance of your campaign health, catching anomalies before they drain your budget.</p>
+<ul class="feature-list">
+<li class="feature-item"><i class="fas fa-check-circle"></i> Instant alerts for spend spikes</li>
+<li class="feature-item"><i class="fas fa-check-circle"></i> Detect zero-install ad groups</li>
+<li class="feature-item"><i class="fas fa-check-circle"></i> Monitor ROAS thresholds hourly</li>
 </ul>
-<div class="offer-price">Free <span style="text-decoration: line-through; margin-left: 8px;">$499</span></div>
 </div>
+<!-- Card 2: Budget Autopilot -->
+<div class="feature-card card-purple">
+<div class="ai-badge">Auto-Scale</div>
+<div class="card-icon-box">
+<i class="fas fa-robot"></i>
 </div>
-<!-- Offer 2 -->
-<div class="offer-card secondary">
-<div class="offer-icon-wrapper">
-<i class="fas fa-chart-line"></i>
-</div>
-<div class="offer-content">
-<div class="offer-badge">Offer 2: Starter Package</div>
-<h3 class="offer-title">TikTok Growth with Nativex</h3>
-<ul class="offer-features">
-<li><i class="fas fa-check"></i> XMP Starter Package Included</li>
-<li><i class="fas fa-check"></i> Connect up to 50 Nativex Ad Accounts</li>
-<li><i class="fas fa-check"></i> Dedicated Demo and Setup Support</li>
+<h3 class="card-title">Budget Autopilot</h3>
+<p class="card-desc">Automatically allocate budget to top performers and scale winners based on your specific KPI guardrails.</p>
+<ul class="feature-list">
+<li class="feature-item"><i class="fas fa-check-circle"></i> Scale winners by +20% daily</li>
+<li class="feature-item"><i class="fas fa-check-circle"></i> Cut losers with low IPM/CTR</li>
+<li class="feature-item"><i class="fas fa-check-circle"></i> Learning phase protection rules</li>
 </ul>
-<div class="offer-price">$500 <span>for 3 months</span></div>
-<div class="price-compare">
-<span class="label">Standard pricing</span>
-<span class="value">4-10K / year</span>
 </div>
+<!-- Card 3: Creative Rotation -->
+<div class="feature-card card-pink">
+<div class="ai-badge">Anti-Fatigue</div>
+<div class="card-icon-box">
+<i class="fas fa-sync-alt"></i>
 </div>
-</div>
-</div>
-<!-- Right: QR & CTA -->
-<div class="cta-container">
-<div class="limited-tag">Event Exclusive</div>
-<div class="qr-box">
-<img class="qr-image" src="../assets/images/qr-hanoi202603.png" alt="Scan to Claim"/>
-</div>
-<h3 class="cta-title">Ready to Scale?</h3>
-<p class="cta-desc">Scan the QR code to activate your trial instantly or book a consultation with our team on-site.</p>
-<a class="cta-button" href="#">
-                Claim Offer Now <i class="fas fa-arrow-right"></i>
-</a>
+<h3 class="card-title">Creative Rotation</h3>
+<p class="card-desc">Combat ad fatigue by automatically rotating in fresh creatives when performance dips below benchmarks.</p>
+<ul class="feature-list">
+<li class="feature-item"><i class="fas fa-check-circle"></i> Auto-refresh fatigued ads</li>
+<li class="feature-item"><i class="fas fa-check-circle"></i> Test new hooks systematically</li>
+<li class="feature-item"><i class="fas fa-check-circle"></i> Maintain steady delivery volume</li>
+</ul>
 </div>
 </div>
 </div>
